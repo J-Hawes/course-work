@@ -1,0 +1,101 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Melbourne Public Library - Survey Response</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="James Hawes" />
+    <link href="Theme.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div id="main-wrapper">
+
+        <header>
+            <nav>
+                <ul class="top-menu" id="mainMenu">
+                    <li>
+                        <a href="Index.html">HOME</a>
+                    </li>
+                    <li>
+                        <a href="AboutUs.html">About Us</a>
+                    </li>
+                    <li>
+                        <a href="Survey.html">Survey</a>
+                    </li>
+                    <li>
+                        <a href="ContactUs.html">Contact Us</a>
+                    </li>
+                    <li>
+                        <a href="SiteMap.html"> Site Map</a>
+                    </li>
+                    <li class="icon">
+                        <a href="javascript:void(0);" onclick="openMenu()">&#9776;</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <div id="formResponse">
+            <p>Your Response was accepted as follows :</p>
+
+                <span id="response"></span>
+
+            
+   
+        </div>
+
+        <footer>
+            <div id="footer">
+                <div class="footerwrap">
+
+                    <a href="https://validator.w3.org/">
+                        <img src="https://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png" width="88" height="35"
+                             alt="HTML5 Powered with CSS3 / Styling, and Semantics" title="HTML5 Powered with CSS3 / Styling, and Semantics">
+                    </a>
+                    <a href="http://jigsaw.w3.org/css-validator">
+                        <img style="border:0;width:88px;height:35px"
+                             src="http://jigsaw.w3.org/css-validator/images/vcss"
+                             alt="Valid CSS!" title="Valid CSS!" />
+                    </a>
+
+                    <div id="footer-copywrite">
+                        © Melbourne Public Library 2017  |  Version 1.00  |  19376877@students.latrobe.edu.au 
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+
+<script type="text/javascript">
+function openMenu() {
+    var x = document.getElementById("mainMenu");
+    if (x.className === "top-menu") {
+        x.className += " responsive";
+    } else {
+        x.className = "top-menu";
+    }
+}
+</script>
+
+<script type="text/javascript">
+    function Responses() {
+        var QueryString = decodeURIComponent(location.href);
+        var NewResponse = "";
+        var TextArray = QueryString.split("?");
+
+        var secondsplit = (TextArray[1]).split("&");
+        for (var v = 0; v < secondsplit.length-1; v++) {
+            var thirdsplit = (secondsplit[v]).split("=");
+            NewResponse += "<br />" + thirdsplit[0] + "&nbsp : &nbsp" + thirdsplit[1];
+        }
+        return NewResponse;
+    }
+    document.getElementById("response").innerHTML = Responses();
+</script>

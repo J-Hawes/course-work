@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Melbourne Public Library - Site Map</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="James Hawes" />
+    <link href="Theme.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div id="main-wrapper">
+
+        <header>
+            <nav>
+                <ul class="top-menu" id="mainMenu">
+                    <li>
+                        <a href="Index.html">HOME</a>
+                    </li>
+                    <li>
+                        <a href="AboutUs.html">About Us</a>
+                    </li>
+                    <li>
+                        <a href="Survey.html">Survey</a>
+                    </li>
+                    <li>
+                        <a href="ContactUs.html">Contact Us</a>
+                    </li>
+                    <li>
+                        <a href="SiteMap.html"> Site Map</a>
+                    </li>
+                    <li class="icon">
+                        <a href="javascript:void(0);" onclick="openMenu()">&#9776;</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <h1>Site Map and Live Page Previews</h1>
+        <div id="sitetree">
+            <ul class="sitemap">
+                <li>
+                    <label for="file1"><a class="tiptext" href="Index.html">Index<iframe class="description" src="Index.html" scrolling="no"></iframe></a></label>
+                    <input type="checkbox" checked id="file1" />
+                    <ul>
+                        <li class="file"><a class="tiptext" href="AboutUs.html">About Us<iframe class="description" src="AboutUs.html" scrolling="no"></iframe></a> </li>
+                        <li>
+                            <label for="subfile1"><a class="tiptext" href="Survey.html">Survey<iframe class="description" src="Survey.html" scrolling="no"></iframe></a></label>
+                            <input type="checkbox" id="subfile1" />
+                            <ul>
+                                <li class="file"><a class="tiptext" href="SurveyResponse.html">Survey Response<iframe class="description" src="SurveyResponse.html" scrolling="no"></iframe></a></li>
+                            </ul>
+                        <li class="file"><a class="tiptext" href="ContactUs.html">Contact Us<iframe class="description" src="ContactUs.html" scrolling="no"></iframe></a></li>
+                        <li class="file"><a class="tiptext" href="SiteMap.html">Site Map<iframe class="description" src="SiteMap.html" scrolling="no"></iframe></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <p id="instructions">The Elements on this page are organised in a functionial directory tree <br />
+        format stlye for the links. <br />
+        They are also functional live previews upon mouse-over for full sized devices.</p>
+
+        <footer>
+            <div id="footer">
+                <div class="footerwrap">
+
+                    <a href="https://validator.w3.org/">
+                        <img src="https://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png" width="88" height="35"
+                             alt="HTML5 Powered with CSS3 / Styling, and Semantics" title="HTML5 Powered with CSS3 / Styling, and Semantics">
+                    </a>
+                    <a href="http://jigsaw.w3.org/css-validator">
+                        <img style="border:0;width:88px;height:35px"
+                             src="http://jigsaw.w3.org/css-validator/images/vcss"
+                             alt="Valid CSS!" title="Valid CSS!" />
+                    </a>
+
+                    <div id="footer-copywrite">
+                        © Melbourne Public Library 2017  |  Version 1.00  |  19376877@students.latrobe.edu.au 
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+function openMenu() {
+    var x = document.getElementById("mainMenu");
+    if (x.className === "top-menu") {
+        x.className += " responsive";
+    } else {
+        x.className = "top-menu";
+    }
+}
+</script>
+
+<script>
+    $(".tiptext").mouseover(function () {
+        $(this).children(".description").show();
+    }).mouseout(function () {
+        $(this).children(".description").hide();
+    });
+</script>

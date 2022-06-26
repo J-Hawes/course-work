@@ -1,0 +1,293 @@
+﻿/* Browser CSS Refresh */
+
+* {
+    border: 0;
+    padding: 0;
+    margin: 0;
+
+}
+
+/* Body Styling for all pages */
+
+html, body {
+    margin: 0px auto;
+    padding: 0;
+    height: 100%;
+    letter-spacing: 1px;
+    min-width: 320px;
+    background-attachment: fixed;
+    background-blend-mode: overlay;
+    background-image: url('Images/State_Library_at_Night_Transparent.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#main-wrapper {
+    box-sizing: border-box;
+    min-height: 100%;
+    padding: 0 0 60px;
+    position: relative;
+}
+
+/* Fixed Nav Menu Styling for all pages */
+
+#logo {
+    width: 0%;
+    float: left;
+}
+
+#logo img {
+    height: 50px;
+    width: 300px;
+    margin: 1px;
+}
+
+nav {
+    background: linear-gradient(to bottom, black, CornflowerBlue);
+    height: 50px;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+    margin: 0 auto;
+    padding: 0;
+    color: white;
+    font-weight: 400;
+    font-size: 1em;
+    text-align: center;
+    position: relative;
+}
+
+#navigation {
+    width: 100%;
+}
+
+nav ul li {
+    display: inline-block;
+    text-align: left;
+    position: relative;
+    list-style: none;
+}
+
+nav ul li:hover {
+    background: #4b4a4a;
+}
+
+nav ul li a {
+    padding: 20px 10px;
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
+
+nav ul li a:hover {
+    text-decoration: none;
+    color: #6584FE;
+}
+
+#active-page {
+    background: #4b4a4a;
+}
+
+/* Main Content Styling */
+
+#content {
+    display: inline-block;
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.gridview {
+    margin-top: 107px;
+    margin-left: 18%;
+    margin-right: 18%;
+    width: auto;
+    border: 2px solid #6584FE ;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.gridview td, .gridview th {
+    border: 2px solid #4b4a4a ;
+    font-size: 12pt;
+    padding: 15px;
+}
+
+
+/*Add, Edit, Delete Page Styling */
+
+.listBox, .labels, .textinputs {
+    display: inline-block;
+    margin-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#lblBook_ID1, #txtBook_ID1 {
+    margin-top: 107px;
+}
+.listBox {
+    padding: 10px;
+    width: 60%;
+}
+
+.labels {    
+    width: 20%;
+    padding: 20px; 
+    background-color: #f9fbff;   
+}
+
+.textinputs {
+    width: 40%;
+    padding: 20px;
+}
+
+.buttons {
+    width: 10%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.buttons:hover {
+    background-color: #45a049;
+    color: black;
+}
+
+.validator {
+    color: red;
+}
+
+/* Footer sytling for all pages */
+
+#footer {
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to bottom, CornflowerBlue, black);
+    margin: 0 auto;
+    text-align: center;
+    font-weight: 200;
+    padding-bottom: 10px;
+    position: absolute;
+    bottom: 0;
+}
+
+#footer a {
+    text-decoration: none;
+}
+
+#footer-copywrite {
+    height: 12px;
+    vertical-align: middle;
+    position: relative;
+    font-size: 0.70em;
+    color: white;
+}
+
+/* Hide the icons and title for the responsive Nav Menu on larger screens */
+
+ul.top-menu li.return-home {
+    display: none;
+}
+
+ul.top-menu li#responsive-title {
+    display: none;
+}
+
+ul.top-menu li.hamburger {
+    display: none;
+}
+
+
+/* Media Query styling for responsive pages sized under 1000px */
+
+@media screen and (max-width:1000px) {
+        
+    /* Hide all menu list items and logo, diplaying only the home icon, page title, and hamburger menu interface */
+    #logo {
+    display: none;
+    }
+
+    ul.top-menu li {
+        display: none;
+    }
+
+    ul.top-menu li.return-home {
+        display: inline-block;
+        font-size: 24px;
+        float: left;
+    }
+
+    ul.top-menu li#responsive-title {
+        display: inline-block;
+        float: none;
+        font-size: 18px;
+        top: 20px;
+    }
+
+    ul.top-menu li.hamburger {
+        float: right;
+        display: block;
+    }
+
+/* Adds the openMenu Javascript class to screen sizes smaller than 1000pixels wide, and defines the list items */
+
+    ul.top-menu.responsive {
+        position: fixed;
+        right: 0;
+        width: 30%;
+        top: 50px;
+        background-color: #eceded;
+        z-index: 5;
+    }
+
+    ul.top-menu.responsive li.icon {
+        position: relative;
+        right: 0;
+        top: 0;
+    }
+
+    ul.top-menu.responsive li {
+        display: block;
+        float: none;
+        padding: 20px 5px;
+        border: 1px solid;
+        text-align: center;
+        background-color: #eceded;
+    }
+
+    ul.top-menu.responsive li a:hover {
+        color: #6584FE;
+    }
+
+    ul.top-menu.responsive li a {
+        display: initial;
+        width: 50px;
+        background-color: #eceded;
+        text-decoration: none;
+        font-size: 14px;
+        color: black;
+    }
+
+    ul.top-menu.responsive li.return-home {
+        display: none;
+    }
+
+    ul.top-menu.responsive li#responsive-title {
+        display: none;
+    }
+
+    .buttons {
+        width: 20%;
+    }
+
+    .gridview td, .gridview th {
+    font-size: 10px;
+}
+
+}

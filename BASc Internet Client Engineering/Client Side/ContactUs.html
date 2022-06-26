@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Melbourne Public Library - Contact Us</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="James Hawes" />
+    <link href="Theme.css" rel="stylesheet" />
+</head>
+
+<body>
+    
+    <div id="main-wrapper">
+
+        <header>
+            <nav>
+                <ul class="top-menu" id="mainMenu">
+                    <li>
+                        <a href="Index.html">HOME</a>
+                    </li>
+                    <li>
+                        <a href="AboutUs.html">About Us</a>
+                    </li>
+                    <li>
+                        <a href="Survey.html">Survey</a>
+                    </li>
+                    <li>
+                        <a href="ContactUs.html">Contact Us</a>
+                    </li>
+                    <li>
+                        <a href="SiteMap.html"> Site Map</a>
+                    </li>
+                    <li class="icon">
+                        <a href="javascript:void(0);" onclick="openMenu()">&#9776;</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <p id="Hours">
+            <h1>Public Opening Hours</h1><br />
+
+            <table>
+                <tr>
+                    <th class="tabletitle">Day</th>
+                    <th class="tabletitle">Opening</th>
+                    <th class="tabletitle">Closing</th>
+                </tr>
+                <tr>
+                    <td class="day">Monday</td>
+                    <td class="opening">10am</td>
+                    <td class="closing">8pm</td>
+                </tr>
+                <tr>
+                    <td class="day">Tuesday</td>
+                    <td class="opening">10am</td>
+                    <td class="closing">8pm</td>
+                </tr>
+                <tr>
+                    <td class="day">Wednesday</td>
+                    <td class="opening">10am</td>
+                    <td class="closing">6pm</td>
+                </tr>
+                <tr>
+                    <td class="day">Thursday</td>
+                    <td class="opening">10am</td>
+                    <td class="closing">9pm</td>
+                </tr>
+                <tr>
+                    <td class="day">Friday</td>
+                    <td class="opening">10am</td>
+                    <td class="closing">6pm</td>
+                </tr>
+                <tr>
+                    <td class="day">Saturday</td>
+                    <td class="opening">10am</td>
+                    <td class="closing">5pm</td>
+                </tr>
+                <tr>
+                    <td class="day">Sunday</td>
+                    <td class="opening">10am</td>
+                    <td class="closing">4pm</td>
+                </tr>
+            </table>
+
+            
+
+            <div id="publicholidays">
+                <h1>Public holidays</h1><br />
+
+                We are closed on Sunday 1 January (New Year's Day), Friday 14 April (Good Friday), Monday 25 December (Christmas Day) and Tuesday 26 December (Boxing Day) in 2017.<br />
+                We are open but will close at 4pm on Monday 2 January (New Year's Day additional day), Thursday 26 January (Australia Day), Monday 13 March (Labour Day), Monday 17 April (Easter Monday), Tuesday 25 April (Anzac Day), Monday 12 June (Queen's Birthday) and Tuesday 7 November (Melbourne Cup).<br />
+                We are open as usual on Saturday 15 April (Saturday before Easter Sunday), Sunday 16 April (Easter Sunday) and Friday 29 September (AFL Grand Final).<br />
+            </div>
+
+        <div id="contactinfo">
+                <h1>Contact Information</h1><br />
+                Should you have any queries or need to get in tough with any of our staff outside of business hours, please do not hestitate to use the email link provided below :<br />
+                <a id="email" href="mailto:19376877@students.latrobe.edu.au?subject=User%20Queries%20from%20Web%20Site">19376877@students.latrobe.edu.au</a>
+        </div>
+
+        <footer>
+            <div id="footer">
+                <div class="footerwrap">
+
+                    <a href="https://validator.w3.org/">
+                        <img src="https://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png" width="88" height="35"
+                             alt="HTML5 Powered with CSS3 / Styling, and Semantics" title="HTML5 Powered with CSS3 / Styling, and Semantics">
+                    </a>
+                    <a href="http://jigsaw.w3.org/css-validator">
+                        <img style="border:0;width:88px;height:35px"
+                             src="http://jigsaw.w3.org/css-validator/images/vcss"
+                             alt="Valid CSS!" title="Valid CSS!" />
+                    </a>
+
+                    <div id="footer-copywrite">
+                        © Melbourne Public Library 2017  |  Version 1.00  |  19376877@students.latrobe.edu.au
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+</body>
+
+</html>
+
+
+<script type="text/javascript">
+function openMenu() {
+    var x = document.getElementById("mainMenu");
+    if (x.className === "top-menu") {
+        x.className += " responsive";
+    } else {
+        x.className = "top-menu";
+    }
+}
+</script>

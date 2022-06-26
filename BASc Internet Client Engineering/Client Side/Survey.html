@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Melbourne Public Library - Survey</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="James Hawes" />
+    <link href="Theme.css" rel="stylesheet" />
+</head>
+
+<body>
+  
+    <div id="main-wrapper">
+
+        <header>
+            <nav>
+                <ul class="top-menu" id="mainMenu">
+                    <li>
+                        <a href="Index.html">HOME</a>
+                    </li>
+                    <li>
+                        <a href="AboutUs.html">About Us</a>
+                    </li>
+                    <li>
+                        <a href="Survey.html">Survey</a>
+                    </li>
+                    <li>
+                        <a href="ContactUs.html">Contact Us</a>
+                    </li>
+                    <li>
+                        <a href="SiteMap.html"> Site Map</a>
+                    </li>
+                    <li class="icon">
+                        <a href="javascript:void(0);" onclick="openMenu()">&#9776;</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <form id="form" method="get" action="SurveyResponse.html" onSubmit="alert('Thank you for your feedback.')">
+            <fieldset>
+                <legend>Please complete our Customer Survey about this website</legend>
+
+                <label for="FirstName">First Name:</label>
+                <input id="FirstName" name="FirstName" type="text" autofocus placeholder="John" required="required" />
+
+                <label for="Surname">Surname:</label>
+                <input id="Surname" name="Surname" type="text" placeholder="Smith" required="required" />
+
+                <br />
+
+                <label for="Email">Email Address:</label>
+                <input id="Email" name="Email" type="email" placeholder="email@example.com" required="required" />
+
+                <br />
+
+                <label for="Age">Age:</label>
+                <input id="Age" name="Age" type="number" min="5" max="100" placeholder="between 5-100" required="required" />
+
+
+                    Male: <input id="GenderMale" name="Gender" type="radio" value="male" />
+                    Female: <input id="GenderFemale" name="Gender" type="radio" value="Female" />
+
+
+                <label for="Category">Select Your Favourite Book Category:</label>
+                <select id="Category" name="Category">
+                    <option>Fiction</option>
+                    <option>Science Fiction</option>
+                    <option>Science</option>
+                    <option>Management</option>
+                    <option>History</option>
+                    <option>Art</option>
+                    <option>Technology</option>
+                </select>
+
+                <br />
+      
+                <label for="Rating">Rate This Site :</label>
+                <input id="Range" type="range" name="Rating" min="1" max="5" step="1" onchange="printValue('Range','Value')">
+             
+                <input id="Value" name="Value" type="text" size="1" placeholder="3" disabled />
+              
+                <br />
+
+                <label for="Comments">Any Additional Comments :</label>
+                <textarea id="Comments" name="Comments" rows="4" cols="40" maxlength="200"></textarea>
+
+                <br />
+
+                <label for="MailingList">Subscribe To Our Mailing List ?</label>
+                <input id="MailingList" name="MailingList" type="checkbox" />
+
+                <br />
+
+                <input id="Reset" name="Reset" type="reset" value="Reset" />
+
+                <input id="Submit" name="Submit" type="submit" value="Submit" />
+
+            </fieldset>
+        </form>
+
+
+        <footer>
+            <div id="footer">
+                <div class="footerwrap">
+
+                    <a href="https://validator.w3.org/">
+                        <img src="https://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png" width="88" height="35"
+                             alt="HTML5 Powered with CSS3 / Styling, and Semantics" title="HTML5 Powered with CSS3 / Styling, and Semantics">
+                    </a>
+                    <a href="http://jigsaw.w3.org/css-validator">
+                        <img style="border:0;width:88px;height:35px"
+                             src="http://jigsaw.w3.org/css-validator/images/vcss"
+                             alt="Valid CSS!" title="Valid CSS!" />
+                    </a>
+
+                    <div id="footer-copywrite">
+                        © Melbourne Public Library 2017  |  Version 1.00  |  19376877@students.latrobe.edu.au
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+</body>
+</html>
+
+<script type="text/javascript">
+function openMenu() {
+    var x = document.getElementById("mainMenu");
+    if (x.className === "top-menu") {
+        x.className += " responsive";
+    } else {
+        x.className = "top-menu";
+    }
+}
+</script>
+
+<script type="text/javascript">
+
+function printValue(Rating, Value) {
+    var x = document.getElementById(Value);
+    var y = document.getElementById(Rating);
+    x.value = y.value;
+}
+
+window.onload = function () { printValue('Rating', 'Value') }
+
+</script>

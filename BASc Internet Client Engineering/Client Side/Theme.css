@@ -1,0 +1,487 @@
+﻿/* Browser CSS Refresh */
+* 
+{
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+/* Body Styling for all pages */
+html, body {
+    margin: 0 auto;
+    padding: 0;
+    height: 100%;
+    letter-spacing: 1px;
+    min-width: 320px;
+    background-attachment: fixed;
+    background-blend-mode: overlay;
+    background-image: url('Images/State_Library_at_Night_Transparent.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#main-wrapper {
+    box-sizing: border-box;
+    min-height: 100%;
+    padding: 0 0 60px;
+    position: relative;
+}
+#content {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+}
+#leftcontent {
+    float: left;
+    padding: 5px;
+    width: 40%;
+    font-size: large;
+}
+#rightcontent {
+    float: left;
+    width: 60%;
+}
+#rightcontent img {
+    width: 90%;
+}
+
+ /* Fixed Nav Menu Styling for all pages */
+nav
+{
+    background: linear-gradient(to bottom, black, CornflowerBlue);
+    height: 50px;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+    margin: 0 auto;
+    padding: 0;
+    color: white;
+    font-weight: 400;
+    font-size: 1em;
+    text-align: center;
+    position: relative;
+}
+nav ul li
+{
+    padding: 20px 10px;
+    display: inline-block;
+    text-align: left;
+    position: relative;
+    list-style: none;
+}
+nav ul li:hover
+{
+    background:#4b4a4a;
+}
+nav ul li a
+{
+    text-decoration:none;
+    color:#fff;
+}
+nav ul li a:hover
+{
+    text-decoration:none;
+    color: #6584FE;
+}
+
+ /* Survey Page & Form Styling */
+#form {
+    width: auto;
+    display: block;
+    margin: auto;
+    border-radius: 5px;
+    padding-top: 20px;
+    text-align: center;
+}
+#form input, select {
+    padding: 10px;
+    margin: 10px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+input[type=text] {
+    width: 40%;  
+}
+input[type=email] {
+    width: 86%;
+}
+input[type=number], [type=radio] {
+    width: 15%;  
+}
+input[type=select] {
+    width: 35%;
+
+}
+input[type=range] {
+    height: 20px;
+    width: 30%;
+}
+#Value {
+    width: 10%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: center;
+}
+textarea {
+    width: 50%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: none;
+}
+input[type=reset] {
+    width: 30%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type=reset]:hover {
+    background-color: #45a049;
+}
+input[type=submit] {
+    width: 30%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+input[type=submit]:hover {
+    background-color: #45a049;
+}
+#formResponse {
+    width: auto;
+    display: block;
+    margin: auto;
+    font-size: large;
+    padding-top: 20px;
+    text-align: center;
+}
+#response{
+    padding: 10px;
+    display: inline-block;
+    border: 1px solid;
+    max-width: 640px;
+    word-wrap: break-word;
+}
+ /* Image map & About us page styling */
+#about {
+    height: auto;
+    width: auto;
+    text-align: center;
+    font-size: large;
+}
+#aboutus {
+    height: 50%;
+    width: 50%;
+    display: block;
+    position: absolute;
+    left: 0;
+    padding: 15px;
+}
+#imagemap {
+    height: 40%;
+    width: 40%;
+    display: block;
+    position: absolute;
+    right: 0;
+    padding: 15px;
+}
+img[usemap] {
+    border: none;
+    height: auto;
+    max-width: 100%;
+    width: auto;
+
+}
+#description {
+    height: 20px;
+    font-size: large;
+}
+
+/* ContactUs Page & Table styling */
+h1 {
+    font-size: large;
+    font-weight: 900;
+    text-align: center;
+    padding-top: 10px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid;
+    text-align: center;
+}
+.tabletitle {
+    width: 33%;
+    border: 1px solid;
+    font-size: large;
+    font-weight: 600;
+}
+td {
+    width: 30%;
+    padding: 5px;
+    border-left: 1px solid;
+    border-right: 1px solid;
+}
+th {
+    width: 30%;
+    padding: 10px;
+    border-left: 1px solid;
+    border-right: 1px solid;
+    background-color: #8bb1ed;
+}
+#publicholidays, #contactinfo {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+#email{
+    display: block;
+    text-align: center;
+}
+
+/* Site map Styling */
+ul.sitemap
+{
+	padding: 50px;
+    height: 100%;
+	width: auto;
+    font-size: large;
+}
+li 
+{ 
+    position: relative;
+    margin-left: 10px;
+    padding: 10px;
+    list-style: none;
+}
+li.file
+{
+    margin-left: -1px !important;
+}
+li.file a
+{
+    background: url(Images/document.png) 0 0 no-repeat;
+    color: black;
+    padding-left: 20px;
+    text-decoration: none;
+    display: block;
+}
+li input
+{
+    position: absolute;
+    left: 3px;
+    margin-left: 0;
+    opacity: 0;
+    z-index: 2;
+    cursor: pointer;
+    top: 15px;
+}
+li input + ul
+{
+    background: url(Images/toggle-small-expand.png) 40px 0 no-repeat;
+    margin: -0.938em 0 0 -44px; /* 15px */
+    height: 1em;
+}
+li input + ul > li 
+{ 
+    display: none; 
+    margin-left: -15px !important; 
+    padding: 10px;
+}
+li label
+{
+    background: url(Images/document.png) 15px 1px no-repeat;
+    cursor: pointer;
+    display: block;
+    padding-left: 37px;
+}
+li input:checked + ul
+{
+    background: url(Images/toggle-small.png) 40px 5px no-repeat;
+    margin: -1.25em 0 0 -44px;
+    padding: 1.563em 0 0 80px;
+    height: auto;
+}
+li input:checked + ul > li 
+{ 
+    display: block; 
+    margin: 2px;
+
+}
+li input:checked + ul > li:last-child 
+{ 
+    margin: 1px;
+
+}
+.tiptext {
+    color:#069; 
+    cursor:pointer;
+}
+.description {
+    display:none;
+    position:fixed;
+    right: 50px;
+    top:100px;
+    border:1px solid #000;
+    width:600px;
+    height:400px;
+    overflow:hidden;
+}
+#instructions
+{
+    font-size: large;
+    padding: 10px;
+}
+iframe {
+    overflow: hidden;
+}
+
+/* Footer sytling for all pages */
+#footer
+{
+    width: 100%;
+    height: 50px;
+    background: linear-gradient(to bottom, CornflowerBlue, black);
+    margin: 0 auto;
+    text-align: center;
+    font-weight: 200;
+    padding-bottom: 10px;
+    position: absolute;
+    bottom: 0;
+}
+#footer a
+{
+    text-decoration:none;
+}
+#footer-copywrite
+{
+ height: 12px;
+ vertical-align: middle;
+ position: relative;
+ font-size: 0.70em;
+ color: white;
+}
+
+
+/* Hide the icon for the responsive Nav Menu on larger screens */
+ul.top-menu li.icon 
+{
+    display: none;
+}
+
+
+/* Media Query styling for responsive pages sized under 1000px */
+@media screen and (max-width:1000px) {
+    /* Hide all menu list items, except for "Home" and show the hamburger icon link to open and close the top-menu */
+    ul.top-menu li:not(:first-child) 
+  {
+      display: none;
+
+  }
+    ul.top-menu li.icon 
+  {
+    float: right;
+    display: block;
+  }
+    /* Adds the openMenu Javascript class to screen sizes smaller than 1000pixels wide */
+    ul.top-menu.responsive 
+    {
+        position: fixed;
+        right:0;
+        width: 100%;
+        top: 50px;
+        background-color:#eceded;
+        z-index: 5;
+    }
+    ul.top-menu.responsive li.icon 
+    {
+        position: relative;
+        right: 0;
+        top: 0;
+    }
+    ul.top-menu.responsive li 
+    {
+        display: block;
+        float: none;
+        padding: 5px;
+        border: 1px solid;
+        text-align: center;
+        background-color:#eceded;
+    }
+    ul.top-menu.responsive li a:hover
+    {
+        color:#6584FE;
+    }
+    ul.top-menu.responsive li a 
+    {
+
+        width:50px;
+        background-color: #eceded;
+        text-decoration: none;
+        font-size: 14px;
+        color:black;
+    }
+    /* Responsive Form display for screens smaller than 1000pixels wide */
+    #form {
+        height: auto;
+        display: inline-block;
+    }
+    #form input {
+        width: 100%;
+        margin: auto;
+    }
+    #formResponse {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+    #response {
+        max-width: 320px;
+    }
+    /* Resposive floor plan image map for mobile devices */
+    #about {
+        display: block;
+        position: relative;
+    }
+    #aboutus{
+        width: 40%;
+        font-size: small;
+    }
+    #imagemap {
+        width: 50%;
+    }
+    #description {
+        font-size: large;
+    }
+    /* Resposive Contact Us page Fonts & Tables for mobile devices */
+    #publicholidays, #contactinfo {
+        font-size: small;
+    }
+    /* Hide the iFrame preview in SiteMap for smaller screens */
+    iframe 
+    {
+    visibility:hidden;
+    }
+    #instructions
+{
+    font-size: medium;
+    padding-bottom: 0px;
+}
+}
+
+

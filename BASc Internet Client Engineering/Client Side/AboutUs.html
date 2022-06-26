@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Melbourne Public Library - About Us</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="James Hawes" />
+    <link href="Theme.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div id="main-wrapper">
+
+        <header>
+            <nav>
+                <ul class="top-menu" id="mainMenu">
+                    <li>
+                        <a href="Index.html">HOME</a>
+                    </li>
+                    <li>
+                        <a href="AboutUs.html">About Us</a>
+                    </li>
+                    <li>
+                        <a href="Survey.html">Survey</a>
+                    </li>
+                    <li>
+                        <a href="ContactUs.html">Contact Us</a>
+                    </li>
+                    <li>
+                        <a href="SiteMap.html"> Site Map</a>
+                    </li>
+                    <li class="icon">
+                        <a href="javascript:void(0);" onclick="openMenu()">&#9776;</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+
+        <div id="about">
+
+            <div id="aboutus">
+                <br />
+                <p>
+                    Melbourne Public Library has been in operation since 1892, serving the community of Melbourne and its immediate neighbouring suburbs with a quality selection of hard to find and popular titles available for reference.
+                </p><br />
+                <p>
+                    A Floorplan of the Library is viewable here so you can navigate the area with ease when first visiting.
+                </p><br />
+                <p>
+                    You can hover over each area to obtain descriptions, or alternatively you can click on an item to have the information displayed below the floor plan.
+                </p><br />
+                <p>The clickable items are included as a working feature for all resolutions, including mobile and tablet devices.</p>
+            </div>
+
+            <div id="imagemap">
+
+                <div id="libraryfloorplan">
+                    <img id="floormap" src="Images/MelbournePublicLibraryFloorPlan.png" usemap="#floorplan" alt="FloorPlan.png">
+                    <map id="floorplan" name="floorplan">
+                        <area shape="rect" coords="67,83,595,1205" href="#description" onclick="clickDescription()" title="Book Shelves" alt="Book Shelves" />
+                        <area shape="rect" coords="679,83,1224,397" href="#description" title="Computer Desks" onclick="clickDescription()" alt="Computer Desks" />
+                        <area shape="poly" coords="900,557,851,530,867,485,924,498,927,446,978,443,986,493,1033,485,1054,529,1005,552,1035,590,1006,623,955,600,923,629,877,603" href="#description" onclick="clickDescription()" title="Reading Area" alt="Reading Area" />
+                        <area shape="poly" coords="700,605,709,556,761,557,766,605,821,601,831,644,785,663,817,702,780,738,739,705,706,741,661,716,677,666,640,646,648,603" href="#description" title="Reading Area" onclick="clickDescription()" alt="Reading Area" />
+                        <area shape="poly" coords="1130,670,1085,646,1097,599,1154,609,1160,557,1209,558,1214,607,1269,600,1278,649,1232,665,1261,698,1229,740,1184,712,1155,744,1113,724" href="#description" title="Reading Area" onclick="clickDescription()" alt="Reading Area" />
+                        <area shape="rect" coords="657,849,820,1205" href="#description" title="Service Counter" onclick="clickDescription()" alt="Service Counter" />
+                        <area shape="rect" coords="1093,847,1250,1205" href="#description" title="Service Counter" onclick="clickDescription()" alt="Service Counter" />
+                        <area shape="poly" coords="1263,520,1229,506,1230,481,1262,478,1271,459,1303,461,1301,533" href="#description" title="Potted Plants" onclick="clickDescription()" alt="Potted Plants" />
+                    </map>
+                </div>
+
+                <div id="description">
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <footer>
+            <div id="footer">
+                <div class="footerwrap">
+
+                    <a href="https://validator.w3.org/">
+                        <img src="https://www.w3.org/html/logo/badge/html5-badge-h-css3-semantics.png" width="88" height="35"
+                             alt="HTML5 Powered with CSS3 / Styling, and Semantics" title="HTML5 Powered with CSS3 / Styling, and Semantics">
+                    </a>
+                    <a href="http://jigsaw.w3.org/css-validator">
+                        <img style="border:0;width:88px;height:35px"
+                             src="http://jigsaw.w3.org/css-validator/images/vcss"
+                             alt="Valid CSS!" title="Valid CSS!" />
+                    </a>
+
+                    <div id="footer-copywrite">
+                        © Melbourne Public Library 2017  |  Version 1.00  |  19376877@students.latrobe.edu.au
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="http://mattstow.com/experiment/responsive-image-maps/jquery.rwdImageMaps.min.js"></script>
+        <script>
+            $(document).ready(function (e) {
+                $('img[usemap]').rwdImageMaps();
+            });
+        </script>
+
+        <script>
+            function clickDescription() {
+                var x = document.activeElement.alt;
+                document.getElementById("description").innerHTML = "The selected area is the: " + x;
+            }
+        </script>
+</body>
+</html>
+
+<script type="text/javascript">
+function openMenu() {
+    var x = document.getElementById("mainMenu");
+    if (x.className === "top-menu") {
+        x.className += " responsive";
+    } else {
+        x.className = "top-menu";
+    }
+}
+</script>
+
