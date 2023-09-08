@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="View.src.JobDetails">
+  <grid id="27dc6" binding="JobDetails" layout-manager="GridLayoutManager" row-count="9" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="654" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-65543"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <toolbar id="3de3d" binding="toolBar">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="2" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="-1" height="20"/>
+          </grid>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <grid id="db631" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints/>
+            <properties>
+              <background color="-15855173"/>
+            </properties>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <component id="f818f" class="javax.swing.JButton" binding="searchButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <background color="-15855173"/>
+              <foreground color="-65543"/>
+              <text value="Search"/>
+              <toolTipText value="Search"/>
+            </properties>
+          </component>
+          <component id="a6498" class="javax.swing.JButton" binding="recruitButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <background color="-15855173"/>
+              <foreground color="-65543"/>
+              <text value="Recruit"/>
+            </properties>
+          </component>
+          <component id="94560" class="javax.swing.JButton" binding="messagesButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <background color="-15855173"/>
+              <foreground color="-65543"/>
+              <text value="Messages"/>
+              <toolTipText value="Log in"/>
+            </properties>
+          </component>
+          <component id="dbae7" class="javax.swing.JButton" binding="accountButton">
+            <constraints/>
+            <properties>
+              <background color="-15855173"/>
+              <foreground color="-65543"/>
+              <text value="Account"/>
+              <toolTipText value="Log in"/>
+            </properties>
+          </component>
+        </children>
+      </toolbar>
+      <component id="4057d" class="javax.swing.JButton" binding="backToSearchButton">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="100" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-15855173"/>
+          <borderPainted value="true"/>
+          <contentAreaFilled value="true"/>
+          <focusable value="false"/>
+          <foreground color="-65543"/>
+          <text value="Back to Search"/>
+        </properties>
+      </component>
+      <component id="74092" class="javax.swing.JTextField" binding="jobTitleTextField" default-binding="true">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-65543"/>
+          <foreground color="-6447197"/>
+          <text value="[Job title]"/>
+        </properties>
+      </component>
+      <component id="608da" class="javax.swing.JTextField" binding="employerTextField">
+        <constraints>
+          <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-65543"/>
+          <foreground color="-6447197"/>
+          <text value="[Employer]"/>
+        </properties>
+      </component>
+      <component id="73155" class="javax.swing.JTextField" binding="locationTextField">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-65543"/>
+          <foreground color="-6447197"/>
+          <text value="[Location]"/>
+        </properties>
+      </component>
+      <component id="52002" class="javax.swing.JTextField" binding="salaryTextField">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-65543"/>
+          <foreground color="-6447197"/>
+          <text value="[Salary Range]"/>
+        </properties>
+      </component>
+      <component id="ea085" class="javax.swing.JTextField" binding="categoryTextField">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-65543"/>
+          <foreground color="-6447197"/>
+          <text value="[Categories]"/>
+        </properties>
+      </component>
+      <component id="64617" class="javax.swing.JTable" binding="skillsTable">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="4" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-65543"/>
+          <foreground color="-16777216"/>
+        </properties>
+      </component>
+      <component id="3c879" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="6" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-6447197"/>
+          <text value="Job Description"/>
+        </properties>
+      </component>
+      <component id="b5fa5" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-6447197"/>
+          <text value="Closes"/>
+        </properties>
+      </component>
+      <component id="6fc2b" class="javax.swing.JTextField" binding="closingDateTextField">
+        <constraints>
+          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-65543"/>
+          <foreground color="-6447197"/>
+          <text value="[Closing Date]"/>
+        </properties>
+      </component>
+      <component id="edfe5" class="javax.swing.JTextField" binding="postedTextField">
+        <constraints>
+          <grid row="3" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-65543"/>
+          <foreground color="-6447197"/>
+          <text value="[Posting Date]"/>
+        </properties>
+      </component>
+      <component id="e9cd6" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="3" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <foreground color="-6447197"/>
+          <text value="Posted"/>
+        </properties>
+      </component>
+      <component id="f0bf4" class="javax.swing.JTextArea" binding="jobDescriptionTextArea">
+        <constraints>
+          <grid row="7" column="0" row-span="1" col-span="4" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-65543"/>
+          <foreground color="-16777216"/>
+          <text value=""/>
+        </properties>
+      </component>
+      <component id="e7d0e" class="javax.swing.JButton" binding="applyButton">
+        <constraints>
+          <grid row="8" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="100" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-15855173"/>
+          <borderPainted value="true"/>
+          <contentAreaFilled value="true"/>
+          <focusable value="false"/>
+          <foreground color="-65543"/>
+          <text value="Apply"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>

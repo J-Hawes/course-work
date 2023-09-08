@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="View.src.AdminHome">
+  <grid id="27dc6" binding="adminPane" layout-manager="GridLayoutManager" row-count="7" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="500" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-65543"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <toolbar id="4dc4a" binding="ToolBar">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="6" anchor="1" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="-1" height="20"/>
+          </grid>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <grid id="e01e7" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints/>
+            <properties>
+              <background color="-15855173"/>
+            </properties>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <component id="54d2d" class="javax.swing.JButton" binding="logoutButton">
+            <constraints/>
+            <properties>
+              <background color="-15855173"/>
+              <foreground color="-65543"/>
+              <text value="Log Out"/>
+            </properties>
+          </component>
+        </children>
+      </toolbar>
+      <component id="e7fc9" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="3" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <focusCycleRoot value="true"/>
+          <font size="26"/>
+          <foreground color="-16777216"/>
+          <text value="JSS Configuration"/>
+        </properties>
+      </component>
+      <component id="17923" class="javax.swing.JButton" binding="skillManagementButton" default-binding="true">
+        <constraints>
+          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="100" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-15855173"/>
+          <borderPainted value="true"/>
+          <contentAreaFilled value="true"/>
+          <focusable value="false"/>
+          <foreground color="-65543"/>
+          <text value="Skill Management"/>
+        </properties>
+      </component>
+      <hspacer id="9faf0">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <hspacer id="bbbb">
+        <constraints>
+          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </hspacer>
+      <component id="fb909" class="javax.swing.JButton" binding="jobManagementButton">
+        <constraints>
+          <grid row="4" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="100" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-15855173"/>
+          <borderPainted value="true"/>
+          <contentAreaFilled value="true"/>
+          <focusable value="false"/>
+          <foreground color="-65543"/>
+          <text value="Job Management"/>
+        </properties>
+      </component>
+      <component id="76ca8" class="javax.swing.JButton" binding="jobCategoryButton">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="100" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-15855173"/>
+          <borderPainted value="true"/>
+          <contentAreaFilled value="true"/>
+          <focusable value="false"/>
+          <foreground color="-65543"/>
+          <text value="Job Category Management"/>
+        </properties>
+      </component>
+      <vspacer id="2546">
+        <constraints>
+          <grid row="6" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="b7b36">
+        <constraints>
+          <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+    </children>
+  </grid>
+</form>

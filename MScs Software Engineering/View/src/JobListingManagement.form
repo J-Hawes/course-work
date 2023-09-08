@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="View.src.JobListingManagement">
+  <grid id="27dc6" binding="recruitPane" layout-manager="GridLayoutManager" row-count="8" column-count="6" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="0" left="0" bottom="0" right="0"/>
+    <constraints>
+      <xy x="20" y="20" width="552" height="400"/>
+    </constraints>
+    <properties>
+      <background color="-65543"/>
+    </properties>
+    <border type="none"/>
+    <children>
+      <component id="e7fc9" class="javax.swing.JLabel">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="6" vsize-policy="0" hsize-policy="0" anchor="1" fill="0" indent="0" use-parent-layout="false"/>
+        </constraints>
+        <properties>
+          <focusCycleRoot value="true"/>
+          <font size="26"/>
+          <foreground color="-16777216"/>
+          <text value="Job Listing Management"/>
+        </properties>
+      </component>
+      <component id="c2a4d" class="javax.swing.JList" binding="jobsList">
+        <constraints>
+          <grid row="3" column="1" row-span="4" col-span="4" vsize-policy="6" hsize-policy="2" anchor="0" fill="3" indent="0" use-parent-layout="false">
+            <preferred-size width="150" height="50"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-1310977"/>
+          <foreground color="-16777216"/>
+        </properties>
+      </component>
+      <toolbar id="f36d5" binding="toolBar">
+        <constraints>
+          <grid row="0" column="0" row-span="1" col-span="6" vsize-policy="0" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="-1" height="20"/>
+          </grid>
+        </constraints>
+        <properties/>
+        <border type="none"/>
+        <children>
+          <grid id="b646e" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+            <margin top="0" left="0" bottom="0" right="0"/>
+            <constraints/>
+            <properties>
+              <background color="-15855173"/>
+            </properties>
+            <border type="none"/>
+            <children/>
+          </grid>
+          <component id="6de11" class="javax.swing.JButton" binding="searchButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <background color="-15855173"/>
+              <foreground color="-65543"/>
+              <text value="Search"/>
+              <toolTipText value="Search"/>
+            </properties>
+          </component>
+          <component id="e1298" class="javax.swing.JButton" binding="recruitButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <background color="-15855173"/>
+              <foreground color="-65543"/>
+              <text value="Recruit"/>
+            </properties>
+          </component>
+          <component id="d1b89" class="javax.swing.JButton" binding="messagesButton" default-binding="true">
+            <constraints/>
+            <properties>
+              <background color="-15855173"/>
+              <foreground color="-65543"/>
+              <text value="Messages"/>
+              <toolTipText value="Log in"/>
+            </properties>
+          </component>
+          <component id="992d9" class="javax.swing.JButton" binding="accountButton">
+            <constraints/>
+            <properties>
+              <background color="-15855173"/>
+              <foreground color="-65543"/>
+              <text value="Account"/>
+              <toolTipText value="Log in"/>
+            </properties>
+          </component>
+        </children>
+      </toolbar>
+      <component id="55462" class="javax.swing.JButton" binding="editJobButton">
+        <constraints>
+          <grid row="7" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="100" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-15855173"/>
+          <borderPainted value="true"/>
+          <contentAreaFilled value="true"/>
+          <focusable value="false"/>
+          <foreground color="-65543"/>
+          <text value="EDIT JOB"/>
+        </properties>
+      </component>
+      <vspacer id="d41ff">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="3c76d">
+        <constraints>
+          <grid row="4" column="5" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <vspacer id="25376">
+        <constraints>
+          <grid row="6" column="5" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="d9d88" class="javax.swing.JButton" binding="closeJobButton">
+        <constraints>
+          <grid row="7" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="100" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-15855173"/>
+          <borderPainted value="true"/>
+          <contentAreaFilled value="true"/>
+          <focusable value="false"/>
+          <foreground color="-65543"/>
+          <text value="CLOSE JOB"/>
+        </properties>
+      </component>
+      <vspacer id="3adea">
+        <constraints>
+          <grid row="7" column="0" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
+      <component id="11c7b" class="javax.swing.JButton" binding="deleteJobButton">
+        <constraints>
+          <grid row="7" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="100" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-15855173"/>
+          <borderPainted value="true"/>
+          <contentAreaFilled value="true"/>
+          <focusable value="false"/>
+          <foreground color="-65543"/>
+          <text value="DELETE JOB"/>
+        </properties>
+      </component>
+      <component id="5c890" class="javax.swing.JButton" binding="addNewJobButton">
+        <constraints>
+          <grid row="2" column="2" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="1" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="100" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-15855173"/>
+          <borderPainted value="true"/>
+          <contentAreaFilled value="true"/>
+          <focusable value="false"/>
+          <foreground color="-65543"/>
+          <text value="+ ADD NEW JOB"/>
+        </properties>
+      </component>
+      <component id="32814" class="javax.swing.JButton" binding="viewApplication">
+        <constraints>
+          <grid row="7" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="1" fill="1" indent="0" use-parent-layout="false">
+            <preferred-size width="100" height="-1"/>
+          </grid>
+        </constraints>
+        <properties>
+          <background color="-15855173"/>
+          <borderPainted value="true"/>
+          <contentAreaFilled value="true"/>
+          <focusable value="false"/>
+          <foreground color="-65543"/>
+          <text value="VIEW APPLICATIONS"/>
+        </properties>
+      </component>
+    </children>
+  </grid>
+</form>
