@@ -108,6 +108,15 @@
       <h2>Attribute, Class and Style Binding with <code>v-bind</code></h2>
       <p>Highlighting Specific Authors:</p>
       <!-- add code here-->
+      <ul>
+        <li
+          v-for="author in authors"
+          :key="author.id"
+          :class="{ highlight: author.name === highlightedAuthor }"
+        >
+          {{ author.name }}
+        </li>
+      </ul>
     </section>
   </div>
 </template>
@@ -136,6 +145,9 @@ const orwell = computed(() => authors.find(({ name }) => name === 'George Orwell
 
 // Activity 5: Find author by ID
 const austen = computed(() => authors.find(({ id }) => id === 1))
+
+// Activity 14b: Get the highlighted author
+const highlightedAuthor = 'George Orwell'
 </script>
 
 <style scoped>
