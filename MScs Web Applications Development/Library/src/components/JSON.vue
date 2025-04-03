@@ -112,7 +112,7 @@
         <li
           v-for="author in authors"
           :key="author.id"
-          :class="{ highlight: author.name === highlightedAuthor }"
+          :class="{ highlight: author.name === 'George Orwell' }"
         >
           {{ author.name }}
         </li>
@@ -145,9 +145,6 @@ const orwell = computed(() => authors.find(({ name }) => name === 'George Orwell
 
 // Activity 5: Find author by ID
 const austen = computed(() => authors.find(({ id }) => id === 1))
-
-// Activity 14b: Get the highlighted author
-const highlightedAuthor = 'George Orwell'
 </script>
 
 <style scoped>
