@@ -19,3 +19,6 @@ h1 {
   border-color: #ff6347; /* More obvious border color change (Tomato) */
   background-color: #ffebe8; /* Light background color change */
 }
+select[id='gender'] {
+  background-color: #d3d3d3; /* Default background color set to gray */
+}
