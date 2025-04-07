@@ -40,7 +40,6 @@ const submitForm = () => {
   if (!errors.value.username && !errors.value.password) {
     sessionStorage.setItem('isAuthenticated', true)
     success.value.password = 'Login successful'
-    console.log('isAuthenticated', sessionStorage.getItem('isAuthenticated'))
     updateAuthStatus()
     router.push({ name: 'Home' })
   }
