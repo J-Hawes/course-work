@@ -2,23 +2,16 @@
   <div class="row">
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <h1 class="text-center">Sign In</h1>
+        <h1 class="text-center mb-4">Sign in with Firebase</h1>
         <div class="row">
-          <div class="col-6 col-md-6">
-            <p><input type="text" class="form-control" placeholder="Email" v-model="email" /></p>
+          <div class="col-6 col-md-6 mb-3">
+            <input type="text" class="form-control" placeholder="Email" v-model="email" />
           </div>
-          <div class="col-6 col-md-6">
-            <p>
-              <input
-                type="password"
-                class="form-control"
-                placeholder="Password"
-                v-model="password"
-              />
-            </p>
+          <div class="col-6 col-md-6 mb-3">
+            <input type="password" class="form-control" placeholder="Password" v-model="password" />
           </div>
-          <div class="text-center col-md-12">
-            <p><button class="btn btn-primary" @click="signin">Sign in via Firebase</button></p>
+          <div class="text-center col-md-12 mt-4">
+            <button class="btn btn-primary" @click="signin">Sign in</button>
             <p>Don't have an account?</p>
             <button class="btn btn-primary" @click="register">Register with Firebase</button>
           </div>
@@ -34,7 +27,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
 import { doc, getDoc } from 'firebase/firestore'
 import { useRouter } from 'vue-router'
 import { updateAuthStatus } from '../store/auth'
-import { db } from '@/main'
+import db from '../Firebase/init.js'
 
 const email = ref('')
 const password = ref('')
@@ -45,10 +38,8 @@ const signin = () => {
   signInWithEmailAndPassword(auth, email.value, password.value)
     .then(async (data) => {
       sessionStorage.setItem('isAuthenticated', true)
-      console.log(auth.currentUser) //To check the current User signed in
       updateAuthStatus()
       const userDoc = await getDoc(doc(db, 'users', data.user.uid))
-      console.log('User ID:', data.user.uid)
       if (userDoc.exists()) {
         const userData = userDoc.data()
         console.log('User Role:', userData.role)

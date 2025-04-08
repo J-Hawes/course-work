@@ -1,17 +1,15 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-md-6">
-      <h1 class="text-center">Register an account</h1>
+      <h1 class="text-center mb-4">Register an account</h1>
       <div class="row">
-        <div class="col-6 col-md-6">
-          <p><input type="text" class="form-control" placeholder="Email" v-model="email" /></p>
+        <div class="col-6 col-md-6 mb-3">
+          <input type="text" class="form-control" placeholder="Email" v-model="email" />
         </div>
-        <div class="col-6 col-md-6">
-          <p>
-            <input type="password" class="form-control" placeholder="Password" v-model="password" />
-          </p>
+        <div class="col-6 col-md-6 mb-3">
+          <input type="password" class="form-control" placeholder="Password" v-model="password" />
         </div>
-        <div class="text-center">
+        <div class="text-center mt-4">
           <button class="btn btn-primary" @click="register">Register with Firebase</button>
         </div>
       </div>
@@ -24,7 +22,7 @@ import { ref } from 'vue'
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 import { doc, setDoc } from 'firebase/firestore'
 import { useRouter } from 'vue-router'
-import { db } from '@/main'
+import db from '../Firebase/init.js'
 
 const email = ref('')
 const password = ref('')
@@ -36,8 +34,6 @@ const register = () => {
     .then((data) => {
       console.log('Firebase Register successful!')
       const role = email.value === 'admin@gmail.com' ? 'admin' : 'user'
-      console.log('User Role:', role)
-      console.log(db)
       setDoc(doc(db, 'users', data.user.uid), {
         email: email.value,
         role: role,
