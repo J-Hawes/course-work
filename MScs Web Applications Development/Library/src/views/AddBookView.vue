@@ -16,6 +16,7 @@
         </div>
       </form>
     </div>
+    <Booklist />
   </div>
 </template>
 
@@ -23,6 +24,7 @@
 import { ref } from 'vue'
 import db from '../Firebase/init.js'
 import { collection, addDoc } from 'firebase/firestore'
+import Booklist from '../components/Booklist.vue'
 
 const isbn = ref('')
 const name = ref('')
