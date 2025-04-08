@@ -1,18 +1,19 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterView } from 'vue-router'
+import NavHeader from './components/NavHeader.vue'
 </script>
 
 <template>
-  <header>
-    <div class="wrapper">
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header>
-
-  <RouterView />
+  <div class="main container">
+    <header>
+      <NavHeader />
+    </header>
+    <main class="main-box container mt-5">
+      <div class="col-md-8 offset-md-2">
+        <router-view />
+      </div>
+    </main>
+  </div>
 </template>
 
 <style scoped></style>
