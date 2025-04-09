@@ -4,11 +4,11 @@ import NavHeader from './components/NavHeader.vue'
 </script>
 
 <template>
-  <div class="main container">
+  <div class="main container-fluid">
     <header>
       <NavHeader />
     </header>
-    <main class="main-box container mt-5">
+    <main class="main-box container-fluid mt-5">
       <div class="col-md-8 offset-md-2">
         <router-view />
       </div>

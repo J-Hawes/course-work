@@ -73,4 +73,9 @@ const validateLogin = (blur) => {
 }
 </script>
 
-<style scoped></style>
+<style scoped>
+.btn-primary {
+  background-color: hsla(160, 100%, 37%, 1);
+  border-color: hsla(160, 100%, 37%, 1);
+}
+</style>

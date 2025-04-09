@@ -1,15 +1,183 @@
 <template>
-  <div class="container">
-    <header class="d-flex justify-content-center py-3">
-      <ul class="nav nav-pills">
-        <li class="nav-item">
-          <router-link to="/" class="nav-link" active-class="active" aria-current="page"
-            >Home</router-link
-          >
-        </li>
-        <li class="nav-item">
-          <router-link to="/about" class="nav-link" active-class="active">About</router-link>
-        </li>
+  <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <div class="container-fluid">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav nav-pills justify-content-center w-100">
+          <li class="nav-item mx-3">
+            <router-link to="/" class="nav-link" active-class="active" aria-current="page"
+              >Home</router-link
+            >
+          </li>
+          <li class="nav-item dropdown mx-3">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="healthDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Health Resources
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="healthDropdown">
+              <li>
+                <router-link to="/about" class="dropdown-item">Health Clinics</router-link>
+              </li>
+              <li>
+                <router-link to="/about" class="dropdown-item">Mental Health Services</router-link>
+              </li>
+              <li>
+                <router-link to="/about" class="dropdown-item">Addiction Services</router-link>
+              </li>
+              <li>
+                <router-link to="/about" class="dropdown-item">Emergency Services</router-link>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown mx-3">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="servicesDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Services Directory
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
+              <li>
+                <router-link to="/service1" class="dropdown-item">Health Clinics</router-link>
+              </li>
+              <li>
+                <router-link to="/service2" class="dropdown-item"
+                  >Mental Health Services</router-link
+                >
+              </li>
+              <li><router-link to="/service3" class="dropdown-item">Bookings</router-link></li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown mx-3">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="educationDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Educational Resources
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="educationDropdown">
+              <li>
+                <router-link to="/service1" class="dropdown-item"
+                  >Workshops and Webinars</router-link
+                >
+              </li>
+              <li>
+                <router-link to="/service2" class="dropdown-item">Job Opportunities</router-link>
+              </li>
+              <li>
+                <router-link to="/service3" class="dropdown-item"
+                  >Volunteer Opportunities</router-link
+                >
+              </li>
+              <li>
+                <router-link to="/service3" class="dropdown-item"
+                  >Schooling Information</router-link
+                >
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown mx-3">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="communityDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Community Forum
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="communityDropdown">
+              <li>
+                <router-link to="/service1" class="dropdown-item">General Discussions</router-link>
+              </li>
+              <li>
+                <router-link to="/service2" class="dropdown-item">Health Questions</router-link>
+              </li>
+              <li>
+                <router-link to="/service3" class="dropdown-item">Support Groups</router-link>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown mx-3">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="additionalDropdown"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Additional Resources
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="additionalDropdown">
+              <li>
+                <router-link to="/service1" class="dropdown-item"
+                  >Frequently Asked Questions</router-link
+                >
+              </li>
+              <li>
+                <router-link to="/service2" class="dropdown-item">Downloadable Guides</router-link>
+              </li>
+              <li>
+                <router-link to="/service3" class="dropdown-item">Legal Rights</router-link>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item dropdown mx-3">
+            <router-link
+              to="/about"
+              class="nav-link dropdown-toggle disabled:"
+              id="aboutDropdown"
+              aria-expanded="false"
+              active-class="active"
+            >
+              About Us
+            </router-link>
+            <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
+              <li>
+                <router-link to="/about#mission" class="dropdown-item">Our Mission</router-link>
+              </li>
+              <li>
+                <router-link to="/about#team" class="dropdown-item">Our Team</router-link>
+              </li>
+              <li>
+                <router-link to="/about#links" class="dropdown-item"
+                  >Partner Organisations</router-link
+                >
+              </li>
+              <li>
+                <router-link to="/about#contact" class="dropdown-item">Contact Us</router-link>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <ul class="navbar-nav nav-pills ms-auto">
         <li class="nav-item" v-if="!isAuthenticated">
           <router-link to="/login" class="nav-link" active-class="active">Login</router-link>
         </li>
@@ -19,12 +187,12 @@
             >Firebase Login</router-link
           >
         </li> -->
-        <li class="nav-item" v-else>
+        <li class="nav-item ms-auto" v-else>
           <a href="#" class="nav-link" @click.prevent="logout">Logout</a>
         </li>
       </ul>
-    </header>
-  </div>
+    </div>
+  </nav>
 </template>
 
 <script setup>
@@ -41,3 +209,23 @@ const logout = () => {
   router.push({ name: 'Home' })
 }
 </script>
+
+<style scoped>
+.navbar-nav .dropdown-toggle::after {
+  display: none;
+}
+.navbar-toggler-icon {
+  width: 1rem;
+  height: 1rem;
+  background-size: contain;
+}
+.navbar-nav .dropdown:hover .dropdown-menu {
+  display: block;
+}
+.navbar-nav .dropdown:hover .nav-link {
+  color: hsla(160, 100%, 37%, 1);
+}
+.nav-pills .nav-link.active {
+  background-color: hsla(160, 10050%, 37%, 0.5);
+}
+</style>

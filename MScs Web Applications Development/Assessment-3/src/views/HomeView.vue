@@ -1,5 +1,5 @@
 <script setup></script>
 
 <template>
-  <main>Welcome</main>
+  <main>This is a Welcome</main>
 </template>
