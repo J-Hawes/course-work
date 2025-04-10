@@ -20,27 +20,33 @@
             >
           </li>
           <li class="nav-item dropdown mx-3">
-            <a
+            <router-link
               class="nav-link dropdown-toggle"
-              href="#"
+              to="health"
               id="healthDropdown"
-              data-bs-toggle="dropdown"
               aria-expanded="false"
+              active-class="active"
             >
               Health Resources
-            </a>
+            </router-link>
             <ul class="dropdown-menu" aria-labelledby="healthDropdown">
               <li>
-                <router-link to="/about" class="dropdown-item">Health Clinics</router-link>
+                <router-link to="/health#general" class="dropdown-item"
+                  >General Health Information</router-link
+                >
               </li>
               <li>
-                <router-link to="/about" class="dropdown-item">Mental Health Services</router-link>
+                <router-link to="/health#mental" class="dropdown-item"
+                  >Mental Health Resources</router-link
+                >
               </li>
               <li>
-                <router-link to="/about" class="dropdown-item">Addiction Services</router-link>
+                <router-link to="/health#women" class="dropdown-item">Womens Health</router-link>
               </li>
               <li>
-                <router-link to="/about" class="dropdown-item">Emergency Services</router-link>
+                <router-link to="/health#children" class="dropdown-item"
+                  >Childrens Health</router-link
+                >
               </li>
             </ul>
           </li>
@@ -64,11 +70,13 @@
                   >Mental Health Services</router-link
                 >
               </li>
-              <li><router-link to="/service3" class="dropdown-item">Bookings</router-link></li>
+              <li class="nav-item" v-if="isAuthenticated">
+                <router-link to="/service3" class="dropdown-item">Bookings</router-link>
+              </li>
             </ul>
           </li>
 
-          <li class="nav-item dropdown mx-3">
+          <li class="nav-item dropdown mx-3" v-if="isAuthenticated">
             <a
               class="nav-link dropdown-toggle"
               href="#"
@@ -100,7 +108,7 @@
             </ul>
           </li>
 
-          <li class="nav-item dropdown mx-3">
+          <li class="nav-item dropdown mx-3" v-if="isAuthenticated">
             <a
               class="nav-link dropdown-toggle"
               href="#"
@@ -139,7 +147,7 @@
                   >Frequently Asked Questions</router-link
                 >
               </li>
-              <li>
+              <li v-if="isAuthenticated">
                 <router-link to="/service2" class="dropdown-item">Downloadable Guides</router-link>
               </li>
               <li>
@@ -181,12 +189,6 @@
         <li class="nav-item" v-if="!isAuthenticated">
           <router-link to="/login" class="nav-link" active-class="active">Login</router-link>
         </li>
-        <!--
-        <li class="nav-item" v-if="!isAuthenticated">
-          <router-link to="/firelogin" class="nav-link" active-class="active"
-            >Firebase Login</router-link
-          >
-        </li> -->
         <li class="nav-item ms-auto" v-else>
           <a href="#" class="nav-link" @click.prevent="logout">Logout</a>
         </li>
@@ -226,6 +228,6 @@ const logout = () => {
   color: hsla(160, 100%, 37%, 1);
 }
 .nav-pills .nav-link.active {
-  background-color: hsla(160, 10050%, 37%, 0.5);
+  background-color: hsla(160, 100%, 37%, 0.3);
 }
 </style>

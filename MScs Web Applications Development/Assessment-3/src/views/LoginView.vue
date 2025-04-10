@@ -1,81 +1,59 @@
 <template>
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <h1 class="text-center">User Information Form</h1>
-      <form @submit.prevent="submitForm">
-        <div class="mb-3">
-          <label for="username" class="form-label">Username</label>
-          <input type="text" class="form-control" id="username" v-model="formData.username" />
-          <div v-if="errors.username" class="text-danger">{{ errors.username }}</div>
+  <div class="row">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <h1 class="text-center mb-4">Sign in with Firebase</h1>
+        <div class="row">
+          <div class="col-6 col-md-6 mb-3">
+            <input type="text" class="form-control" placeholder="Email" v-model="email" />
+          </div>
+          <div class="col-6 col-md-6 mb-3">
+            <input type="password" class="form-control" placeholder="Password" v-model="password" />
+          </div>
+          <div class="text-center col-md-12 mt-4">
+            <button class="btn btn-primary" @click="signin">Sign in</button>
+            <p>Don't have an account?</p>
+            <button class="btn btn-primary" @click="register">Register with Firebase</button>
+          </div>
         </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">Password</label>
-          <input type="password" class="form-control" id="password" v-model="formData.password" />
-          <div v-if="errors.password" class="text-danger">{{ errors.password }}</div>
-          <div v-if="success.password" class="text-success">{{ success.password }}</div>
-        </div>
-        <div class="text-center">
-          <button type="submit" class="btn btn-primary me-2">Submit</button>
-          <button type="button" class="btn btn-secondary" @click="clearForm">Clear</button>
-        </div>
-      </form>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+import { doc, getDoc } from 'firebase/firestore'
 import { useRouter } from 'vue-router'
 import { updateAuthStatus } from '../stores/auth'
-import { ref } from 'vue'
+import db from '../firebase/init.js'
 
+const email = ref('')
+const password = ref('')
 const router = useRouter()
+const auth = getAuth()
 
-const formData = ref({
-  username: '',
-  password: '',
-})
-
-const submitForm = () => {
-  validateLogin(true)
-  if (!errors.value.username && !errors.value.password) {
-    sessionStorage.setItem('isAuthenticated', true)
-    success.value.password = 'Login successful'
-    updateAuthStatus()
-    router.push({ name: 'Home' })
-  }
+const signin = () => {
+  signInWithEmailAndPassword(auth, email.value, password.value)
+    .then(async (data) => {
+      sessionStorage.setItem('isAuthenticated', true)
+      updateAuthStatus()
+      const userDoc = await getDoc(doc(db, 'users', data.user.uid))
+      if (userDoc.exists()) {
+        const userData = userDoc.data()
+        console.log('User Role:', userData.role)
+      } else {
+        console.log('No such document!')
+      }
+      router.push('/')
+    })
+    .catch((error) => {
+      console.log(error)
+    })
 }
 
-const clearForm = () => {
-  formData.value = {
-    username: '',
-    password: '',
-  }
-}
-
-const success = ref({
-  password: null,
-})
-
-const errors = ref({
-  username: null,
-  password: null,
-})
-
-const validateLogin = (blur) => {
-  if (formData.value.username == 'testing' && formData.value.password == '12345678') return true
-  else {
-    if (blur) {
-      errors.value.username = 'Invalid username or password'
-      errors.value.password = 'Invalid username or password'
-    }
-    return false
-  }
+const register = () => {
+  router.push({ name: 'Register' })
 }
 </script>
-
-<style scoped>
-.btn-primary {
-  background-color: hsla(160, 100%, 37%, 1);
-  border-color: hsla(160, 100%, 37%, 1);
-}
-</style>
