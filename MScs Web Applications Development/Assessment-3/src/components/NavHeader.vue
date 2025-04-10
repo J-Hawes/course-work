@@ -22,7 +22,7 @@
           <li class="nav-item dropdown mx-3">
             <router-link
               class="nav-link dropdown-toggle"
-              to="health"
+              to="/health"
               id="healthDropdown"
               aria-expanded="false"
               active-class="active"
@@ -52,56 +52,60 @@
           </li>
 
           <li class="nav-item dropdown mx-3">
-            <a
+            <router-link
               class="nav-link dropdown-toggle"
-              href="#"
+              to="/services"
               id="servicesDropdown"
-              data-bs-toggle="dropdown"
               aria-expanded="false"
+              active-class="active"
             >
               Services Directory
-            </a>
+            </router-link>
             <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
               <li>
-                <router-link to="/service1" class="dropdown-item">Health Clinics</router-link>
+                <router-link to="/services#health" class="dropdown-item"
+                  >Health Clinics</router-link
+                >
               </li>
               <li>
-                <router-link to="/service2" class="dropdown-item"
+                <router-link to="/services#mental" class="dropdown-item"
                   >Mental Health Services</router-link
                 >
               </li>
               <li class="nav-item" v-if="isAuthenticated">
-                <router-link to="/service3" class="dropdown-item">Bookings</router-link>
+                <router-link to="/services#booking" class="dropdown-item">Bookings</router-link>
               </li>
             </ul>
           </li>
 
           <li class="nav-item dropdown mx-3" v-if="isAuthenticated">
-            <a
+            <router-link
               class="nav-link dropdown-toggle"
-              href="#"
+              to="/education"
               id="educationDropdown"
-              data-bs-toggle="dropdown"
               aria-expanded="false"
+              active-class="active"
             >
               Educational Resources
-            </a>
+            </router-link>
             <ul class="dropdown-menu" aria-labelledby="educationDropdown">
               <li>
-                <router-link to="/service1" class="dropdown-item"
+                <router-link to="/education#workshop" class="dropdown-item"
                   >Workshops and Webinars</router-link
                 >
               </li>
               <li>
-                <router-link to="/service2" class="dropdown-item">Job Opportunities</router-link>
+                <router-link to="/education#jobs" class="dropdown-item"
+                  >Job Opportunities</router-link
+                >
               </li>
               <li>
-                <router-link to="/service3" class="dropdown-item"
+                <router-link to="/education#volunteer" class="dropdown-item"
                   >Volunteer Opportunities</router-link
                 >
               </li>
               <li>
-                <router-link to="/service3" class="dropdown-item"
+                <router-link to="/education#school" class="dropdown-item"
                   >Schooling Information</router-link
                 >
               </li>
@@ -109,49 +113,57 @@
           </li>
 
           <li class="nav-item dropdown mx-3" v-if="isAuthenticated">
-            <a
+            <router-link
               class="nav-link dropdown-toggle"
-              href="#"
+              to="/community"
               id="communityDropdown"
-              data-bs-toggle="dropdown"
               aria-expanded="false"
+              active-class="active"
             >
               Community Forum
-            </a>
+            </router-link>
             <ul class="dropdown-menu" aria-labelledby="communityDropdown">
               <li>
-                <router-link to="/service1" class="dropdown-item">General Discussions</router-link>
+                <router-link to="/community#general" class="dropdown-item"
+                  >General Discussions</router-link
+                >
               </li>
               <li>
-                <router-link to="/service2" class="dropdown-item">Health Questions</router-link>
+                <router-link to="/community#health" class="dropdown-item"
+                  >Health Questions</router-link
+                >
               </li>
               <li>
-                <router-link to="/service3" class="dropdown-item">Support Groups</router-link>
+                <router-link to="/community#groups" class="dropdown-item"
+                  >Support Groups</router-link
+                >
               </li>
             </ul>
           </li>
 
           <li class="nav-item dropdown mx-3">
-            <a
+            <router-link
               class="nav-link dropdown-toggle"
-              href="#"
+              to="/additional"
               id="additionalDropdown"
-              data-bs-toggle="dropdown"
               aria-expanded="false"
+              active-class="active"
             >
               Additional Resources
-            </a>
+            </router-link>
             <ul class="dropdown-menu" aria-labelledby="additionalDropdown">
               <li>
-                <router-link to="/service1" class="dropdown-item"
+                <router-link to="/additional#faqs" class="dropdown-item"
                   >Frequently Asked Questions</router-link
                 >
               </li>
               <li v-if="isAuthenticated">
-                <router-link to="/service2" class="dropdown-item">Downloadable Guides</router-link>
+                <router-link to="/additional#download" class="dropdown-item"
+                  >Downloadable Guides</router-link
+                >
               </li>
               <li>
-                <router-link to="/service3" class="dropdown-item">Legal Rights</router-link>
+                <router-link to="/additional#law" class="dropdown-item">Legal Rights</router-link>
               </li>
             </ul>
           </li>

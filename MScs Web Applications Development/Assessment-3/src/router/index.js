@@ -16,6 +16,26 @@ const router = createRouter({
       component: () => import('../views/HealthResources.vue'),
     },
     {
+      path: '/services',
+      name: 'Services',
+      component: () => import('../views/ServicesDirectory.vue'),
+    },
+    {
+      path: '/education',
+      name: 'Education',
+      component: () => import('../views/EducationResources.vue'),
+    },
+    {
+      path: '/community',
+      name: 'Community',
+      component: () => import('../views/CommunityForum.vue'),
+    },
+    {
+      path: '/additional',
+      name: 'Additional',
+      component: () => import('../views/AdditionalResources.vue'),
+    },
+    {
       path: '/about',
       name: 'About',
       component: () => import('../views/AboutView.vue'),
