@@ -2,98 +2,122 @@
   <div class="about">
     <h1>About Us</h1>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi condimentum mattis velit, sit
-      amet aliquam sapien malesuada quis. Nulla suscipit ut eros quis faucibus. Sed maximus libero
-      eu turpis convallis fringilla. Donec posuere nec enim a consectetur. Etiam blandit nisl velit,
-      ac blandit nisi auctor ut. Curabitur tincidunt dui elit, sit amet molestie magna accumsan
-      iaculis. Mauris eu nibh a neque tempus vestibulum ac eget erat. In nunc sapien, auctor in
-      nulla eu, pretium sollicitudin turpis. Interdum et malesuada fames ac ante ipsum primis in
-      faucibus.
+      We believe that healthcare should be accessible to all—regardless of background, financial
+      situation, or immigration status. Refugees and asylum seekers often face immense challenges
+      when trying to access medical care. Language barriers, cultural differences, and a lack of
+      familiarity with Australia’s healthcare system can prevent individuals from receiving the
+      treatment they need. Our mission is to bridge these gaps, providing compassionate, culturally
+      sensitive healthcare support and education tailored to the unique needs of displaced
+      communities.
     </p>
     <p>
-      Nulla nisl enim, imperdiet et vulputate at, tempor eget nisl. Sed luctus urna urna, in
-      tincidunt est molestie eget. Cras eu aliquam mi. Integer a diam sed ipsum luctus porta at sed
-      erat. Aliquam ut gravida felis. Aenean felis ipsum, vulputate id diam vel, iaculis viverra
-      magna. Nunc eleifend risus maximus, sodales leo ullamcorper, blandit felis. Pellentesque
-      laoreet finibus sem at imperdiet. Proin interdum, tellus ac mollis pharetra, eros mi ultricies
-      nulla, a ultrices quam arcu at felis. Sed elit libero, eleifend non nisl fringilla, placerat
-      fermentum massa. Cras efficitur sed velit a vestibulum. Ut blandit cursus rhoncus. Morbi
-      fringilla urna at leo rutrum sodales.
+      Founded on principles of inclusivity and dignity, we work to empower individuals through
+      health education, direct medical assistance, mental health support, and advocacy. Beyond
+      immediate healthcare needs, we help refugees and asylum seekers navigate the complexities of
+      the system, ensuring they have the knowledge and confidence to take control of their own
+      well-being.
     </p>
     <p>
-      Donec non erat sed lacus convallis sollicitudin egestas at sapien. Pellentesque ante augue,
-      vestibulum at magna ut, interdum auctor mi. Quisque semper mattis purus at commodo. Fusce
-      mattis sollicitudin tempor. Nam ut lectus sed arcu semper elementum. Curabitur ullamcorper
-      pellentesque purus, sed consectetur urna eleifend dictum. Suspendisse eget dui fringilla,
-      malesuada ligula nec, ullamcorper tellus. Suspendisse ornare eleifend ex nec ullamcorper. Nam
-      convallis diam sit amet rutrum convallis.
+      Our programs are designed to be holistic, acknowledging the impact of displacement, trauma,
+      and uncertainty on both physical and mental health. From primary healthcare services to mental
+      health counseling, legal support, and health literacy workshops, we are committed to providing
+      the necessary tools for individuals to build healthier, more stable lives in Australia.
     </p>
   </div>
   <div class="mission">
     <h1 id="misson">Our Mission</h1>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc volutpat scelerisque dui, sed
-      facilisis nisi iaculis vitae. Mauris id justo aliquet, varius lectus at, congue nibh. Nam
-      tincidunt lorem et egestas egestas. Nullam vel interdum tortor, vitae feugiat nisl. Mauris
-      elementum tincidunt libero non dapibus. Proin aliquam nisl eu turpis interdum, eu viverra dui
-      convallis. Cras vitae ligula tellus. Proin velit nisi, rhoncus quis vehicula mollis, pretium
-      at arcu. Maecenas aliquet, quam in pharetra convallis, risus metus hendrerit felis, eget
-      iaculis justo arcu a mi. Vivamus interdum nunc sed justo lobortis ullamcorper. In quis rhoncus
-      sem, at hendrerit quam. Vestibulum ac lorem vitae nulla pulvinar hendrerit. Vivamus tempor
-      sapien justo, eu feugiat sapien tincidunt id. Aliquam varius, arcu vitae sodales cursus, nisl
-      elit cursus sapien, vel scelerisque velit neque quis felis.
+      At the heart of our work is a commitment to ensuring equitable healthcare access for
+      underrepresented communities. No one should have to struggle to receive basic medical
+      attention simply because of their circumstances. We strive to eliminate the barriers refugees
+      and asylum seekers face, offering not only direct medical support but also the education and
+      advocacy needed to drive long-term change.
     </p>
     <p>
-      Nunc quis enim elementum, rhoncus metus aliquet, fringilla mauris. Sed porttitor nunc ante,
-      eget mollis nibh hendrerit sodales. Praesent efficitur imperdiet ipsum. Mauris vel sapien
-      volutpat, facilisis dolor quis, maximus eros. Curabitur sed enim vel velit volutpat luctus
-      vitae sit amet urna. Vivamus cursus, magna et dapibus maximus, nisi odio elementum libero, at
-      malesuada nunc dolor id purus. Maecenas sapien est, elementum vitae convallis vitae, dapibus
-      non quam.
+      Our mission extends beyond individual care—it’s about fostering systemic improvements. We work
+      alongside healthcare providers, policymakers, and community leaders to push for better
+      healthcare protections for refugees and asylum seekers. By raising awareness and advocating
+      for inclusive policies, we aim to ensure these communities receive the recognition and support
+      they deserve.
+    </p>
+    <p>
+      Through our outreach programs, medical referrals, and health workshops, we are helping
+      individuals not only access treatment but also gain the confidence to advocate for their own
+      health needs. Every person deserves compassionate care, and we are dedicated to making that a
+      reality.
     </p>
   </div>
   <div class="team">
     <h1 id="team">Team</h1>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed elementum diam. Suspendisse
-      dictum libero id erat sodales gravida. Nam posuere ex vel feugiat mollis. Nulla quis urna
-      ultricies, aliquet odio quis, convallis neque. Duis tristique, lectus euismod dignissim
-      ullamcorper, erat quam ultrices erat, in maximus arcu nisl maximus sem. Maecenas volutpat
-      mollis efficitur. Vivamus in neque vel metus maximus maximus id sit amet libero.
+      Our team is made up of dedicated professionals, volunteers, and advocates who share a passion
+      for health equity and social justice. From medical experts providing direct care to community
+      outreach coordinators ensuring individuals receive necessary support, every member of our team
+      plays a critical role in strengthening the health and well-being of refugees and asylum
+      seekers.
     </p>
     <p>
-      Aliquam ac elementum quam. Suspendisse potenti. Praesent tellus arcu, pulvinar ut massa sed,
-      scelerisque cursus turpis. Sed lobortis eros nunc, nec aliquam turpis elementum ac. Mauris
-      faucibus facilisis volutpat. In velit purus, rutrum vestibulum molestie.
+      Our healthcare professionals specialize in refugee health, mental health support, and
+      culturally competent care, ensuring that every individual who seeks help from our organization
+      receives appropriate and effective treatment. Alongside them, our educators and policy
+      advocates work tirelessly to provide health literacy training and push for systemic
+      improvements that will create lasting change.
+    </p>
+    <p>
+      Beyond our core staff, we rely on the support of a dedicated volunteer network, which includes
+      individuals assisting with mentorship programs, event coordination, and administrative work.
+      Whether offering medical expertise or simply providing a welcoming, supportive environment,
+      our team is united by a commitment to making healthcare more accessible and equitable.
     </p>
   </div>
   <div class="links">
     <h1 id="links">Partner Organisations</h1>
     <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed quis lacus ante. Mauris at arcu
-      tincidunt, blandit diam vel, vehicula magna. Nullam faucibus orci at ipsum commodo, nec
-      placerat massa consequat. Aliquam erat volutpat. Maecenas sit amet neque elementum, consequat
-      mi nec, vulputate elit. In dictum iaculis sapien lobortis feugiat. Fusce justo sapien, gravida
-      ut auctor non, posuere et sapien. Nullam lobortis metus in velit aliquet, sit amet aliquet ex
-      gravida. Etiam euismod est eget ligula auctor tristique. Sed tempor tellus lacus, vitae
-      vulputate nunc molestie sed. Ut in sem urna. Nulla eu sagittis purus. Curabitur vel nisl
-      faucibus, efficitur nisl a, blandit elit. Quisque laoreet, est et tempor sagittis, augue magna
-      porta lorem, at blandit ligula turpis id lacus.
+      Collaboration is central to our success. We work closely with a diverse range of partner
+      organizations, from healthcare providers and advocacy groups to universities and government
+      agencies, all of whom share our commitment to improving health outcomes for refugees and
+      asylum seekers.
     </p>
     <p>
-      Proin maximus fermentum lectus, eget imperdiet est tempor quis. Vivamus auctor orci eu
-      pellentesque venenatis. Aliquam a libero luctus, hendrerit quam vitae, placerat leo. Phasellus
-      volutpat nisi maximus massa pulvinar.
+      These partnerships allow us to expand our reach and ensure comprehensive support for the
+      individuals we serve. By joining forces with medical institutions, we provide direct
+      healthcare referrals and specialized treatment options. Our relationships with community
+      organizations enable us to offer social support services such as housing assistance and
+      employment programs.
     </p>
-    <ul>
-      <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-      <li>Quisque efficitur, nunc ut facilisis tincidunt, enim ligula bibendum erat.</li>
-      <li>Praesent nec ligula a nunc facilisis fringilla.</li>
-      <li>Nulla facilisi. Sed nec ligula a nunc facilisis fringilla.</li>
-      <li>Aliquam erat volutpat. Sed nec ligula a nunc facilisis fringilla.</li>
-      <li>Donec nec ligula a nunc facilisis fringilla.</li>
-      <li>In hac habitasse platea dictumst. Sed nec ligula a nunc facilisis fringilla.</li>
-      <li>Curabitur nec ligula a nunc facilisis fringilla.</li>
+    <p>
+      Meanwhile, our collaboration with policymakers allows us to advocate for legislative changes
+      that will improve long-term healthcare access. Every partnership strengthens our ability to
+      support those in need. Together, we are building a network of care that ensures refugees and
+      asylum seekers in Australia receive the medical attention, education, and resources they need
+      to live healthier lives.
+    </p>
+    <p>
+      We are grateful for the support of our partners and the impact they have on our mission. If
+      you are interested in collaborating with us or learning more about our partner organizations,
+      please reach out to us.
+    </p>
+    <ul class="my-2">
+      <li>
+        <strong>Refugee Council of Australia</strong> – Advocating for the rights and welfare of
+        refugees and asylum seekers.
+      </li>
+      <li>
+        <strong>Australian Red Cross</strong> – Providing humanitarian support and emergency
+        assistance.
+      </li>
+      <li>
+        <strong>Multicultural Health and Support Service</strong> – Offering culturally appropriate
+        healthcare services.
+      </li>
+      <li>
+        <strong>Settlement Services International</strong> – Supporting refugees in their settlement
+        journey.
+      </li>
+      <li>
+        <strong>Refugee Health Network</strong> – Promoting health and well-being for refugees and
+        asylum seekers.
+      </li>
     </ul>
   </div>
   <div class="contact my-5">

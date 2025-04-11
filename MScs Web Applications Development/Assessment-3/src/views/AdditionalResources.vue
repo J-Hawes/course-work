@@ -125,4 +125,8 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { isAuthenticated, updateAuthStatus } from '../stores/auth'
+updateAuthStatus()
+console.log('isAuthenticated', isAuthenticated.value)
+</script>
