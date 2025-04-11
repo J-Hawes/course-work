@@ -112,11 +112,12 @@
           <strong>Address</strong>
           <p>123 High Street, Sydney, NSW 2000</p>
         </div>
-        <div style="width: 100%">
+        <div>
           <iframe
             width="100%"
             height="330"
             loading="lazy"
+            crossorigin="anonymous"
             marginheight="0"
             marginwidth="0"
             src="https://maps.google.com/maps?width=100%25&amp;height=330&amp;hl=en&amp;q=123%20High%20Street,%20Sydney,%20NSW%202000+()
@@ -184,7 +185,7 @@
               <div v-if="errors.phone" class="text-danger">{{ errors.phone }}</div>
             </div>
           </div>
-          <div class="col-6 col-md-6">
+          <div class="col-12 col-md-12">
             <div class="subject">
               <label for="subject" class="form-label">Subject</label>
               <select

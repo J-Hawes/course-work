@@ -41,11 +41,11 @@
                 >
               </li>
               <li>
-                <router-link to="/health#women" class="dropdown-item">Womens Health</router-link>
+                <router-link to="/health#women" class="dropdown-item">Women's Health</router-link>
               </li>
               <li>
                 <router-link to="/health#children" class="dropdown-item"
-                  >Childrens Health</router-link
+                  >Children's Health</router-link
                 >
               </li>
             </ul>
