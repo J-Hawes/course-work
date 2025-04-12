@@ -64,17 +64,20 @@
             </router-link>
             <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
               <li>
-                <router-link to="/services#health" class="dropdown-item"
-                  >Health Clinics</router-link
+                <router-link
+                  :to="{ path: '/services', query: { services: 'healthClinics' } }"
+                  class="dropdown-item"
                 >
+                  Health Clinics
+                </router-link>
               </li>
               <li>
-                <router-link to="/services#mental" class="dropdown-item"
-                  >Mental Health Services</router-link
+                <router-link
+                  :to="{ path: '/services', query: { services: 'mentalHealthClinics' } }"
+                  class="dropdown-item"
                 >
-              </li>
-              <li class="nav-item" v-if="isAuthenticated">
-                <router-link to="/services#booking" class="dropdown-item">Bookings</router-link>
+                  Mental Health Services
+                </router-link>
               </li>
             </ul>
           </li>

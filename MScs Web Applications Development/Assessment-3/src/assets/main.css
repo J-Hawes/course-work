@@ -17,6 +17,16 @@ a,
   border-color: hsla(160, 100%, 20%, 1) !important;
 }
 
+.dp__action_buttons .dp__action_select {
+  background-color: hsla(160, 100%, 37%, 1) !important;
+}
+
+.dp__theme_light {
+  --dp-hover-color: hsla(160, 100%, 37%, 0.2) !important;
+  --dp-menu-border-color: hsla(160, 100%, 37%, 1) !important;
+  --dp-primary-color: hsla(160, 100%, 37%, 1) !important;
+}
+
 @media (hover: hover) {
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
