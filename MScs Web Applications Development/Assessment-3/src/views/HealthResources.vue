@@ -83,3 +83,9 @@ import GeneralHealth from './GeneralHealth.vue'
 import MentalHealth from './MentalHealth.vue'
 import WomensHealth from './WomensHealth.vue'
 </script>
+
+<style scoped>
+h1 {
+  text-align: center;
+}
+</style>

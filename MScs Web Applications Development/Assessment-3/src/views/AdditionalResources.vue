@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <h1>Additional Resources</h1>
     We believe that access to reliable information and services is essential for fostering
     well-being. Our curated selection of resources covers health education, mental health support,
@@ -56,3 +56,9 @@ import FrequentQuestions from './FrequentQuestions.vue'
 import LegalRights from './LegalRights.vue'
 updateAuthStatus()
 </script>
+
+<style scoped>
+h1 {
+  text-align: center;
+}
+</style>

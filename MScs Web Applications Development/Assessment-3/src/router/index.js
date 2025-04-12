@@ -50,6 +50,11 @@ const router = createRouter({
       name: 'Register',
       component: () => import('../views/RegisterView.vue'),
     },
+    {
+      path: '/user',
+      name: 'User',
+      component: () => import('../views/UserDashboard.vue'),
+    },
   ],
   scrollBehavior(to, from, savedPosition) {
     if (to.hash) {

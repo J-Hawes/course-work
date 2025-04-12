@@ -26,3 +26,9 @@
   information and assistance they need. If you require legal guidance, please reach out to us for
   support or referrals.
 </template>
+
+<style scoped>
+h2 {
+  text-align: center;
+}
+</style>

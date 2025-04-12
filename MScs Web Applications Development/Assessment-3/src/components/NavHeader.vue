@@ -1,4 +1,5 @@
 <template>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container-fluid">
       <button
@@ -171,7 +172,7 @@
           <li class="nav-item dropdown mx-3">
             <router-link
               to="/about"
-              class="nav-link dropdown-toggle disabled:"
+              class="nav-link dropdown-toggle"
               id="aboutDropdown"
               aria-expanded="false"
               active-class="active"
@@ -201,8 +202,25 @@
         <li class="nav-item" v-if="!isAuthenticated">
           <router-link to="/login" class="nav-link" active-class="active">Login</router-link>
         </li>
-        <li class="nav-item ms-auto" v-else>
-          <a href="#" class="nav-link" @click.prevent="logout">Logout</a>
+        <li class="nav-item dropdown ms-auto" v-else>
+          <router-link
+            to="/user"
+            class="nav-link dropdown-toggle"
+            id="userDropdown"
+            aria-expanded="false"
+            active-class="active"
+          >
+            <i class="material-icons" style="font-size: 36px">person</i>
+          </router-link>
+
+          <ul class="dropdown-menu" aria-labelledby="userDropdown">
+            <li>
+              <router-link to="/user" class="dropdown-item">User Dashboard</router-link>
+            </li>
+            <li>
+              <a href="#" class="dropdown-item" @click.prevent="logout">Logout</a>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
@@ -241,5 +259,9 @@ const logout = () => {
 }
 .nav-pills .nav-link.active {
   background-color: hsla(160, 100%, 37%, 0.3);
+}
+li.dropdown:last-child .dropdown-menu {
+  right: 0;
+  left: auto;
 }
 </style>

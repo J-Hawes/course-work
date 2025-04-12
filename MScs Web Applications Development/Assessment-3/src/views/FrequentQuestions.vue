@@ -24,3 +24,9 @@
   </ul>
   Have more questions? Feel free to reach out to us!
 </template>
+
+<style scoped>
+h2 {
+  text-align: center;
+}
+</style>
