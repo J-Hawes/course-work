@@ -27,7 +27,7 @@
                 id="password"
                 @blur="() => validatePassword(true)"
                 @input="() => validatePassword(false)"
-                v-model="password"
+                v-model="formData.password"
               />
               <div v-if="errors.password" class="text-danger">{{ errors.password }}</div>
             </div>
@@ -39,7 +39,7 @@
                 id="confirmPassword"
                 @blur="() => validateConfirmPassword(true)"
                 @input="() => validateConfirmPassword(false)"
-                v-model="confirmPassword"
+                v-model="formData.confirmPassword"
               />
               <div v-if="errors.confirmPassword" class="text-danger">
                 {{ errors.confirmPassword }}
@@ -93,11 +93,12 @@
             <div class="col-6 col-md-6">
               <label for="dob" class="form-label">Date of Birth</label>
               <VueDatePicker
-                :format="'DD/MM/YYYY'"
+                v-model="formData.dob"
+                :format="'dd/MM/yyyy'"
                 :placeholder="'DD/MM/YYYY'"
+                @select="onDateSelect"
                 @blur="() => validateDob(true)"
                 @input="() => validateDob(false)"
-                v-model="formData.dob"
               ></VueDatePicker>
               <div v-if="errors.dob" class="text-danger">{{ errors.dob }}</div>
             </div>
@@ -123,18 +124,22 @@ import { useRouter } from 'vue-router'
 import VueDatePicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
 
-const email = ref('')
-const password = ref('')
 const router = useRouter()
 const auth = getAuth()
 
 const formData = ref({
   email: '',
+  password: '',
+  confirmPassword: '',
   firstname: '',
   surname: '',
   gender: '',
   dob: '',
 })
+
+const onDateSelect = (date) => {
+  console.log('Selected date:', date)
+}
 
 const register = async () => {
   try {
@@ -148,15 +153,19 @@ const register = async () => {
       !errors.value.gender &&
       !errors.value.dob
     ) {
-      const userCredential = await createUserWithEmailAndPassword(auth, email.value, password.value)
+      const userCredential = await createUserWithEmailAndPassword(
+        auth,
+        formData.value.email,
+        formData.value.password,
+      )
       const user = userCredential.user
 
       console.log('Firebase Register successful!')
 
-      const role = email.value === 'admin@gmail.com' ? 'admin' : 'user'
+      const role = formData.value.email === 'admin@gmail.com' ? 'admin' : 'user'
 
       await setDoc(doc(db, 'users', user.uid), {
-        email: email.value,
+        email: formData.value.email,
         firstname: formData.value.firstname,
         surname: formData.value.surname,
         gender: formData.value.gender,
