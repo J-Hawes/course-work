@@ -175,11 +175,10 @@ const register = async () => {
 
       alert('Form submitted successfully!')
       router.push({ name: 'Login' })
+      clearForm()
     }
   } catch (error) {
     console.error('Error submitting form:', error)
-  } finally {
-    clearForm()
   }
 }
 
