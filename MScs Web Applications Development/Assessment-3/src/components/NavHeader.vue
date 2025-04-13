@@ -237,7 +237,6 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 updateAuthStatus()
-console.log('isAuthenticated', isAuthenticated.value)
 const logout = () => {
   sessionStorage.removeItem('isAuthenticated')
   isAuthenticated.value = false

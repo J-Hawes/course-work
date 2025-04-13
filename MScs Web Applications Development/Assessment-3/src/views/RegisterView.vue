@@ -8,12 +8,12 @@
             <div class="col-12 col-md-12">
               <label for="email" class="form-label">Email Address</label>
               <input
+                v-model="formData.email"
                 type="text"
                 class="form-control"
                 id="email"
-                @blur="() => validateEmail(true)"
-                @input="() => validateEmail(false)"
-                v-model="formData.email"
+                @blur="() => validateEmail(formData.email, errors, true)"
+                @input="() => validateEmail(formData.email, errors, false)"
               />
               <div v-if="errors.email" class="text-danger">{{ errors.email }}</div>
             </div>
@@ -22,12 +22,12 @@
             <div class="col-6 col-md-6">
               <label for="password" class="form-label">Password</label>
               <input
+                v-model="formData.password"
                 type="password"
                 class="form-control"
                 id="password"
-                @blur="() => validatePassword(true)"
-                @input="() => validatePassword(false)"
-                v-model="formData.password"
+                @blur="() => validatePassword(formData.password, errors, true)"
+                @input="() => validatePassword(formData.password, errors, false)"
               />
               <div v-if="errors.password" class="text-danger">{{ errors.password }}</div>
             </div>
@@ -37,8 +37,16 @@
                 type="password"
                 class="form-control"
                 id="confirmPassword"
-                @blur="() => validateConfirmPassword(true)"
-                @input="() => validateConfirmPassword(false)"
+                @blur="
+                  () =>
+                    validateConfirmPassword(
+                      formData.password,
+                      formData.confirmPassword,
+                      errors,
+                      true,
+                    )
+                "
+                @input="() => validateConfirmPassword(formData.confirmPassword, errors, false)"
                 v-model="formData.confirmPassword"
               />
               <div v-if="errors.confirmPassword" class="text-danger">
@@ -53,8 +61,8 @@
                 type="text"
                 class="form-control"
                 id="firstname"
-                @blur="() => validateName(true)"
-                @input="() => validateName(false)"
+                @blur="() => validateName(formData.firstname, 'firstname', errors, true)"
+                @input="() => validateName(formData.firstname, 'firstname', errors, false)"
                 v-model="formData.firstname"
               />
               <div v-if="errors.firstname" class="text-danger">{{ errors.firstname }}</div>
@@ -65,8 +73,8 @@
                 type="text"
                 class="form-control"
                 id="surname"
-                @blur="() => validateName(true)"
-                @input="() => validateName(false)"
+                @blur="() => validateName(formData.firstname, 'surname', errors, true)"
+                @input="() => validateName(formData.firstname, 'surname', errors, false)"
                 v-model="formData.surname"
               />
               <div v-if="errors.surname" class="text-danger">{{ errors.surname }}</div>
@@ -77,11 +85,11 @@
               <div class="gender">
                 <label for="gender" class="form-label">gender</label>
                 <select
+                  v-model="formData.gender"
                   class="form-select"
                   id="gender"
-                  @blur="() => validategender(true)"
-                  @input="() => validategender(false)"
-                  v-model="formData.gender"
+                  @blur="() => validateGender(formData.gender, errors, true)"
+                  @input="() => validateGender(formData.gender, errors, false)"
                 >
                   <option value="male">Male</option>
                   <option value="female">Female</option>
@@ -96,9 +104,8 @@
                 v-model="formData.dob"
                 :format="'dd/MM/yyyy'"
                 :placeholder="'DD/MM/YYYY'"
-                @select="onDateSelect"
-                @blur="() => validateDob(true)"
-                @input="() => validateDob(false)"
+                @blur="() => validateDob(formData.dob, errors, true)"
+                @input="() => validateDob(formData.dob, errors, false)"
               ></VueDatePicker>
               <div v-if="errors.dob" class="text-danger">{{ errors.dob }}</div>
             </div>
@@ -123,6 +130,14 @@ import { doc, setDoc } from 'firebase/firestore'
 import { useRouter } from 'vue-router'
 import VueDatePicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
+import {
+  validateEmail,
+  validatePassword,
+  validateConfirmPassword,
+  validateName,
+  validateGender,
+  validateDob,
+} from '@/helpers/validation.js'
 
 const router = useRouter()
 const auth = getAuth()
@@ -137,13 +152,29 @@ const formData = ref({
   dob: '',
 })
 
-const onDateSelect = (date) => {
-  console.log('Selected date:', date)
-}
+const errors = ref({
+  email: null,
+  password: null,
+  confirmPassword: null,
+  firstname: null,
+  surname: null,
+  gender: null,
+  dob: null,
+})
 
 const register = async () => {
   try {
-    validateName(true)
+    validateEmail(formData.value.email, errors.value, true)
+    validatePassword(formData.value.password, errors.value, true)
+    validateConfirmPassword(
+      formData.value.password,
+      formData.value.confirmPassword,
+      errors.value,
+      true,
+    )
+    validateName(formData.value.firstname, formData.value.surname, errors.value, true)
+    validateGender(formData.value.gender, errors.value, true)
+    validateDob(formData.value.dob, errors.value, true)
     if (
       !errors.value.password &&
       !errors.value.confirmPassword &&
@@ -178,7 +209,13 @@ const register = async () => {
       clearForm()
     }
   } catch (error) {
-    console.error('Error submitting form:', error)
+    if (error.code === 'auth/email-already-in-use') {
+      errors.value.email = 'This email is already in use. Please use a different email.'
+    } else if (error.code === 'auth/invalid-email') {
+      errors.value.email = 'The email address is not valid.'
+    } else {
+      console.error('Error submitting form:', error)
+    }
   }
 }
 
@@ -191,79 +228,6 @@ const clearForm = () => {
     surname: '',
     gender: '',
     dob: '',
-  }
-}
-
-const errors = ref({
-  email: null,
-  password: null,
-  confirmPassword: null,
-  firstname: null,
-  surname: null,
-  gender: null,
-  dob: null,
-})
-
-const validateEmail = (blur) => {
-  const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-  if (!emailPattern.test(formData.value.email)) {
-    if (blur) errors.value.email = 'Not a vaild email address'
-  } else {
-    errors.value.email = null
-  }
-}
-const validatePassword = (blur) => {
-  const password = formData.value.password
-  const minLength = 8
-  const hasUpperCase = /[A-Z]/.test(password)
-  const hasLowerCase = /[a-z]/.test(password)
-  const hasNumber = /\d/.test(password)
-  const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password)
-
-  if (password.length < minLength) {
-    if (blur) errors.value.password = `Password must be at least ${minLength} characters long`
-  } else if (!hasUpperCase) {
-    if (blur) errors.value.password = 'Password must contain at least one uppercase letter'
-  } else if (!hasLowerCase) {
-    if (blur) errors.value.password = 'Password must contain at least one lowercase letter'
-  } else if (!hasNumber) {
-    if (blur) errors.value.password = 'Password must contain at least one number'
-  } else if (!hasSpecialChar) {
-    if (blur) errors.value.password = 'Password must contain at least one special character'
-  } else {
-    errors.value.password = null
-  }
-}
-
-const validateConfirmPassword = (blur) => {
-  if (formData.value.password !== formData.value.confirmPassword) {
-    if (blur) errors.value.confirmPassword = 'Passwords do not match.'
-  } else {
-    errors.value.confirmPassword = null
-  }
-}
-const validateName = (blur) => {
-  if (formData.value.firstname.length < 3) {
-    if (blur) errors.value.firstname = 'First name must be at least 3 characters'
-  } else if (formData.value.surname.length < 3) {
-    if (blur) errors.value.surname = 'Surname must be at least 3 characters'
-  } else {
-    errors.value.firstname = null
-    errors.value.surname = null
-  }
-}
-const validategender = (blur) => {
-  if (formData.value.gender === '') {
-    if (blur) errors.value.gender = 'gender is required'
-  } else {
-    errors.value.usermessage = null
-  }
-}
-const validateDob = (blur) => {
-  if (!formData.value.dob) {
-    if (blur) errors.value.dob = 'Date of birth is required'
-  } else {
-    errors.value.dob = null
   }
 }
 </script>
