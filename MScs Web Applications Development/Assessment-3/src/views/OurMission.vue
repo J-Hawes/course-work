@@ -1,5 +1,5 @@
 <template>
-  <h1 id="misson">Our Mission</h1>
+  <h1 id="mission">Our Mission</h1>
   <p>
     At the heart of our work is a commitment to ensuring equitable healthcare access for
     underrepresented communities. No one should have to struggle to receive basic medical attention

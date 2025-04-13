@@ -72,3 +72,34 @@ export const validateDob = (dob, errors, blur) => {
     errors.dob = null
   }
 }
+
+// Phone number validation
+export const validatePhone = (phone, errors, blur) => {
+  const phonePattern = /^\d{10}$/
+  if (!phonePattern.test(phone)) {
+    if (blur) errors.phone = 'Phone number must be 10 digits'
+  } else {
+    errors.phone = null
+  }
+}
+
+// Subject of message validation
+export const validateSubject = (subject, errors, blur) => {
+  if (blur) {
+    if (!subject) {
+      errors.subject = 'Please select a subject'
+    } else {
+      errors.subject = null
+    }
+  }
+}
+
+// Message validation
+export const validateMessage = (usermessage, errors, blur) => {
+  if (usermessage.length < 10) {
+    if (blur) errors.usermessage = 'Message must be at least 10 characters'
+    else {
+      errors.usermessage = null
+    }
+  }
+}

@@ -3,12 +3,16 @@
     <div class="card mb-3 w-100 w-sm-50">
       <div class="row g-0">
         <div class="col-md-2 d-flex align-items-center justify-content-center">
+          <!-- Generate google map iframe based on the clinic data retrieved from Firestore using an API-free version -->
           <iframe
             class="img-fluid rounded-start responsive-img"
             width="100%"
-            :src="`https://maps.google.com/maps?width=100%25&height=330&hl=en&q=
-                  ${encodeURIComponent(`${clinic.streetNumber} ${clinic.streetName}, ${clinic.suburb}, ${clinic.state} ${clinic.postcode}`)}
-                  &t=&z=15&ie=UTF8&iwloc=B&output=embed`"
+            referrerpolicy="no-referrer-when-downgrade"
+            :src="`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.
+          835434509374!2d144.9630579153169!3d-37.81627974202198!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.
+          1!3m3!1m2!1s0x6ad642af0f11fd81%3A0xf577d8b8c8b8b8b8!2s
+          ${encodeURIComponent(`${clinic.streetNumber} ${clinic.streetName}, ${clinic.suburb}, ${clinic.state} ${clinic.postcode}`)}!
+          5e0!3m2!1sen!2sau!4v1610000000000!5m2!1sen!2sau`"
           >
           </iframe>
         </div>
@@ -28,6 +32,7 @@
         </div>
         <div class="col-md-2 d-flex align-items-center justify-content-center">
           <div>
+            <!---- Button changes to 'make a booking' or 'log in' depending on users authentication status -->
             <button class="btn btn-primary w-100" v-if="isAuthenticated">Make a booking</button>
             <RouterLink class="btn btn-primary w-100" to="/login" v-else>
               Log in to make a booking
@@ -49,6 +54,7 @@ import { collection, getDocs, orderBy, query } from 'firebase/firestore'
 const clinics = ref([])
 const route = useRoute()
 
+// Fetches clinics from the Firestore database based on the provided collection name.
 const fetchClinics = async (collectionName) => {
   try {
     const q = query(collection(db, collectionName), orderBy('name'))
@@ -63,6 +69,7 @@ const fetchClinics = async (collectionName) => {
   }
 }
 
+// Watches for changes in the route query parameters and fetches clinics accordingly.
 watch(
   () => route.query.services,
   (newCollection) => {
@@ -73,6 +80,8 @@ watch(
   { immediate: true },
 )
 
+// Watches for changes in the authentication status and updates the clinics list accordingly.
+// This is used for changing the button from 'log in' to 'make a booking'.
 onMounted(() => {
   updateAuthStatus()
   if (route.query.services) {

@@ -34,6 +34,7 @@ const password = ref('')
 const router = useRouter()
 const auth = getAuth()
 
+// Sign in with Firebase
 const signin = () => {
   signInWithEmailAndPassword(auth, email.value, password.value)
     .then(async (data) => {

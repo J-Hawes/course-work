@@ -13,6 +13,7 @@ import { ref } from 'vue'
 
 export const isAuthenticated = ref(false)
 
+// Function to set authentication status
 export const updateAuthStatus = () => {
   isAuthenticated.value = sessionStorage.getItem('isAuthenticated') === 'true'
 }

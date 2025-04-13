@@ -62,6 +62,7 @@
             >
               Services Directory
             </router-link>
+            <!-- Query provided to be used elsewhere in the application for selecting with path to load-->
             <ul class="dropdown-menu" aria-labelledby="servicesDropdown">
               <li>
                 <router-link
@@ -237,6 +238,8 @@ import { useRouter } from 'vue-router'
 const router = useRouter()
 
 updateAuthStatus()
+
+// Function to log out the user, removing authentication status from session storage, and redirecting to the home page
 const logout = () => {
   sessionStorage.removeItem('isAuthenticated')
   isAuthenticated.value = false

@@ -56,6 +56,9 @@ const router = createRouter({
       component: () => import('../views/UserDashboard.vue'),
     },
   ],
+  // This option is used to scroll to the top of the page when navigating to a new route
+  // and to scroll to the saved position when navigating back
+  // or forward in the history stack.
   scrollBehavior(to, from, savedPosition) {
     if (to.hash) {
       return {

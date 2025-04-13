@@ -9,9 +9,10 @@
               <label for="email" class="form-label">Email Address</label>
               <input
                 v-model="formData.email"
-                type="text"
+                type="email"
                 class="form-control"
                 id="email"
+                required
                 @blur="() => validateEmail(formData.email, errors, true)"
                 @input="() => validateEmail(formData.email, errors, false)"
               />
@@ -26,6 +27,8 @@
                 type="password"
                 class="form-control"
                 id="password"
+                required
+                minlength="8"
                 @blur="() => validatePassword(formData.password, errors, true)"
                 @input="() => validatePassword(formData.password, errors, false)"
               />
@@ -34,9 +37,11 @@
             <div class="col-6 col-md-6">
               <label for="confirmPassword" class="form-label">Confirm Password</label>
               <input
+                v-model="formData.confirmPassword"
                 type="password"
                 class="form-control"
                 id="confirmPassword"
+                required
                 @blur="
                   () =>
                     validateConfirmPassword(
@@ -47,7 +52,6 @@
                     )
                 "
                 @input="() => validateConfirmPassword(formData.confirmPassword, errors, false)"
-                v-model="formData.confirmPassword"
               />
               <div v-if="errors.confirmPassword" class="text-danger">
                 {{ errors.confirmPassword }}
@@ -58,24 +62,26 @@
             <div class="col-6 col-md-6">
               <label for="firstname" class="form-label">First Name</label>
               <input
+                v-model="formData.firstname"
                 type="text"
                 class="form-control"
                 id="firstname"
+                required
                 @blur="() => validateName(formData.firstname, 'firstname', errors, true)"
                 @input="() => validateName(formData.firstname, 'firstname', errors, false)"
-                v-model="formData.firstname"
               />
               <div v-if="errors.firstname" class="text-danger">{{ errors.firstname }}</div>
             </div>
             <div class="col-6 col-md-6">
               <label for="surname" class="form-label">Surname</label>
               <input
+                v-model="formData.surname"
                 type="text"
                 class="form-control"
                 id="surname"
+                required
                 @blur="() => validateName(formData.firstname, 'surname', errors, true)"
                 @input="() => validateName(formData.firstname, 'surname', errors, false)"
-                v-model="formData.surname"
               />
               <div v-if="errors.surname" class="text-danger">{{ errors.surname }}</div>
             </div>
@@ -88,6 +94,7 @@
                   v-model="formData.gender"
                   class="form-select"
                   id="gender"
+                  required
                   @blur="() => validateGender(formData.gender, errors, true)"
                   @input="() => validateGender(formData.gender, errors, false)"
                 >
@@ -162,6 +169,7 @@ const errors = ref({
   dob: null,
 })
 
+// Function to handle form submission by validating the form first then adding the user to Firebase
 const register = async () => {
   try {
     validateEmail(formData.value.email, errors.value, true)
@@ -195,6 +203,7 @@ const register = async () => {
 
       const role = formData.value.email === 'admin@gmail.com' ? 'admin' : 'user'
 
+      // Set user data in Firestore
       await setDoc(doc(db, 'users', user.uid), {
         email: formData.value.email,
         firstname: formData.value.firstname,

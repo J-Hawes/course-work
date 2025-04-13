@@ -18,6 +18,7 @@ import ClinicList from '../components/ClinicList.vue'
 const currentComponent = ref(null)
 const route = useRoute()
 
+// Function to load the component based on the route query parameters
 function loadComponent(services) {
   if (services) {
     currentComponent.value = ClinicList
@@ -26,6 +27,8 @@ function loadComponent(services) {
   }
 }
 
+// Watch for changes in the route query parameters
+// and load the component accordingly
 watch(
   () => route.query.services,
   (newCollection) => {
