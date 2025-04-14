@@ -25,7 +25,7 @@
                 {{ clinic.streetNumber }} {{ clinic.streetName }}, {{ clinic.suburb }},
                 {{ clinic.state }}, {{ clinic.postcode }}
               </li>
-              <li><strong>Phone: </strong> 0{{ clinic.phone }}</li>
+              <li><strong>Phone: </strong> {{ clinic.phone.toString().padStart(10, '0') }}</li>
               <li><strong>Hours: </strong>{{ clinic.hours }}</li>
             </ul>
           </div>

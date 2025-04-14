@@ -14,7 +14,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav nav-pills justify-content-center w-100">
+        <ul class="navbar-nav nav-pills justify-content-center w-100 flex-wrap">
           <li class="nav-item mx-3">
             <router-link to="/" class="nav-link" active-class="active" aria-current="page"
               >Home</router-link
