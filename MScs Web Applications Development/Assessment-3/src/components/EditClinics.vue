@@ -69,7 +69,7 @@
                       type="text"
                       id="streetNumber{{ clinic.id }}"
                       class="form-control"
-                      v-model="editingclinic.streetNumber"
+                      v-model.number="editingclinic.streetNumber"
                     />
                   </div>
                   <div class="col-8">
@@ -103,15 +103,16 @@
                   type="text"
                   id="postcode{{ clinic.id }}"
                   class="form-control"
-                  v-model="editingclinic.postcode"
+                  v-model.number="editingclinic.postcode"
                 />
               </td>
               <td>
                 <input
-                  type="phone"
+                  type="tel"
+                  pattern="[0-9]{10}"
                   id="phone{{ clinic.id }}"
                   class="form-control"
-                  v-model="editingclinic.phone"
+                  v-model.number="editingclinic.phone"
                 />
               </td>
               <td>
@@ -137,7 +138,6 @@
         <div class="card mb-3" v-for="clinic in clinics" :key="clinic.id">
           <div class="card-body">
             <div class="card-body">
-              <!-- Static Card View -->
               <template v-if="editingRowId !== clinic.id">
                 <h5 class="card-title">{{ clinic.name }}</h5>
                 <p class="card-text">
@@ -153,7 +153,7 @@
                   <button class="btn btn-warning btn-sm me-2" @click="startEdit(clinic)">
                     <i class="material-icons">edit</i>
                   </button>
-                  <button class="btn btn-danger btn-sm" @click="deleteclinic(clinic.id)">
+                  <button class="btn btn-danger btn-sm" @click="deleteClinic(clinic.id)">
                     <i class="material-icons">delete</i>
                   </button>
                 </div>
@@ -176,7 +176,7 @@
                     type="text"
                     id="streetNumber-mobile-{{ clinic.id }}"
                     class="form-control mb-2"
-                    v-model="editingclinic.streetNumber"
+                    v-model.number="editingclinic.streetNumber"
                     placeholder=" "
                   />
                   <label for="streetNumber-mobile-{{ clinic.id }}">Street Number</label>
@@ -220,7 +220,7 @@
                     type="text"
                     id="postcode-mobile-{{ clinic.id }}"
                     class="form-control mb-2"
-                    v-model="editingclinic.postcode"
+                    v-model.number="editingclinic.postcode"
                     placeholder=" "
                   />
                   <label for="postcode-mobile-{{ clinic.id }}">Postcode</label>
@@ -228,10 +228,11 @@
 
                 <div class="floating-label">
                   <input
-                    type="phone"
+                    type="tel"
+                    pattern="[0-9]{10}"
                     id="phone-mobile-{{ clinic.id }}"
                     class="form-control mb-2"
-                    v-model="editingclinic.phone"
+                    v-model.number="editingclinic.phone"
                     placeholder=" "
                   />
                   <label for="phone-mobile-{{ clinic.id }}">Phone</label>
@@ -293,7 +294,7 @@
                   type="text"
                   id="streetNumber-modal"
                   class="form-control mb-2"
-                  v-model="newClinic.streetNumber"
+                  v-model.number="newClinic.streetNumber"
                   placeholder=" "
                 />
                 <label for="streetNumber-modal">Street Number</label>
@@ -333,17 +334,18 @@
                   type="text"
                   id="postcode-modal"
                   class="form-control mb-2"
-                  v-model="newClinic.postcode"
+                  v-model.number="newClinic.postcode"
                   placeholder=" "
                 />
                 <label for="postcode-modal">Postcode</label>
               </div>
               <div class="floating-label">
                 <input
-                  type="phone"
+                  type="tel"
+                  pattern="[0-9]{10}"
                   id="phone-modal"
                   class="form-control mb-2"
-                  v-model="newClinic.phone"
+                  v-model.number="newClinic.phone"
                   placeholder=" "
                 />
                 <label for="phone-modal">Phone</label>
@@ -439,11 +441,6 @@ const startEdit = (clinic) => {
 // Save the edited clinic to the database and update the clinics array
 const saveEdit = async () => {
   try {
-    // Parse Strings as numbers before entry into Firebase
-    editingclinic.value.streetNumber = Number(editingclinic.value.streetNumber)
-    editingclinic.value.postcode = Number(editingclinic.value.postcode)
-    editingclinic.value.phone = Number(editingclinic.value.phone)
-
     const clinicRef = doc(db, 'healthClinics', editingclinic.value.id)
     await updateDoc(clinicRef, editingclinic.value)
 
@@ -467,7 +464,7 @@ const cancelEdit = () => {
 
 // TODO fix  this for linked query refs
 // Delete the clinic from the database and remove it from the clinics array
-const deleteclinic = async (id) => {
+const deleteClinic = async (id) => {
   try {
     const confirmDelete = window.confirm('Are you sure you want to remove this clinic?')
     if (!confirmDelete) {
@@ -487,10 +484,6 @@ const addClinic = async () => {
       alert('Please fill in all required fields.')
       return
     }
-    // Parse Strings as numbers before entry into Firebase
-    newClinic.value.streetNumber = Number(newClinic.value.streetNumber)
-    newClinic.value.postcode = Number(newClinic.value.postcode)
-    newClinic.value.phone = Number(newClinic.value.phone)
 
     const clinicRef = await addDoc(collection(db, 'healthClinics'), newClinic.value)
     clinics.value.push({ id: clinicRef.id, ...newClinic.value })
