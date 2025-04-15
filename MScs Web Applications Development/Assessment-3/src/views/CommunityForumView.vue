@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h2>Community Forum</h2>
+  <div class="container my-4">
+    <h1 class="text-center">Community Forum</h1>
     <p>
       Welcome to the Community Forum! Here you can share your experiences and connect with others.
     </p>

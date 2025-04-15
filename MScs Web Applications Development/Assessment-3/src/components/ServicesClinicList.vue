@@ -33,7 +33,9 @@
         <div class="col-md-2 d-flex align-items-center justify-content-center">
           <div>
             <!---- Button changes to 'make a booking' or 'log in' depending on users authentication status -->
-            <button class="btn btn-primary w-100" v-if="isAuthenticated">Make a booking</button>
+            <button class="btn btn-primary w-100" v-if="isAuthenticated" @click="makeBooking">
+              Make a booking
+            </button>
             <RouterLink class="btn btn-primary w-100" to="/login" v-else>
               Log in to make a booking
             </RouterLink>
@@ -69,6 +71,10 @@ const fetchClinics = async (collectionName) => {
   } catch (error) {
     console.error('Error fetching clinics:', error)
   }
+}
+
+const makeBooking = () => {
+  alert('Booking functionality is not implemented yet.')
 }
 
 // Watches for changes in the route query parameters and fetches clinics accordingly.

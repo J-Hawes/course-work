@@ -263,6 +263,13 @@ const logout = () => {
 </script>
 
 <style scoped>
+/* Disable pointer events for dropdown toggles on larger screens */
+@media (min-width: 768px) {
+  .navbar-nav .dropdown-toggle {
+    pointer-events: none;
+  }
+}
+
 .navbar-nav .dropdown-toggle::after {
   display: none;
 }
