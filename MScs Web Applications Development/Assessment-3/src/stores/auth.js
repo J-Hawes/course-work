@@ -1,32 +1,46 @@
+import { defineStore } from 'pinia'
 import { ref } from 'vue'
-// import { defineStore } from 'pinia'
 
-// export const isAuthenticated = defineStore('isAuthenticated', () => {
-//   const isAuthenticated = ref(sessionStorage.getItem('isAuthenticated') === 'true')
-//   const setAuthStatus = (status) => {
-//     isAuthenticated.value = status
-//     sessionStorage.setItem('isAuthenticated', status)
-//   }
+export const useAuthStore = defineStore('auth', () => {
+  // Reactive state
+  const isAuthenticated = ref(false)
+  const userRole = ref('')
 
-//   return { isAuthenticated, setAuthStatus }
-// })
+  // Actions
+  const setAuthStatus = (status) => {
+    isAuthenticated.value = status
+    sessionStorage.setItem('isAuthenticated', status)
+  }
 
-export const isAuthenticated = ref(false)
-export const userRole = ref('')
+  const getAuthStatus = () => {
+    isAuthenticated.value = sessionStorage.getItem('isAuthenticated') === 'true'
+    return isAuthenticated.value
+  }
 
-// Function to set authentication status
-export const setAuthStatus = () => {
-  isAuthenticated.value = sessionStorage.getItem('isAuthenticated') === 'true'
-}
+  const setUserRole = (role) => {
+    userRole.value = role
+    sessionStorage.setItem('userRole', role)
+  }
 
-// Function to get role status
-export const getUserRole = () => {
-  userRole.value = sessionStorage.getItem('userRole') || ''
-  return userRole.value
-}
+  const getUserRole = () => {
+    userRole.value = sessionStorage.getItem('userRole') || ''
+    return userRole.value
+  }
 
-// Function to set role status
-export const setUserRole = (role) => {
-  userRole.value = role
-  sessionStorage.setItem('userRole', role)
-}
+  const logout = () => {
+    isAuthenticated.value = false
+    userRole.value = ''
+    sessionStorage.removeItem('isAuthenticated')
+    sessionStorage.removeItem('userRole')
+  }
+
+  return {
+    isAuthenticated,
+    userRole,
+    setAuthStatus,
+    getAuthStatus,
+    setUserRole,
+    getUserRole,
+    logout,
+  }
+})

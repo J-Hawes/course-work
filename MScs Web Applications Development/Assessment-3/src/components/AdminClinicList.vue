@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-md-12">
-      <h1 class="text-center mt-4">Clinic List</h1>
+      <h1 class="text-center mt-4">{{ title }}</h1>
       <div class="d-flex justify-content-end mb-3">
         <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addClinicModal">
           Add New Clinic
@@ -31,7 +31,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted, watchEffect } from 'vue'
 import db from '../firebase/init.js'
 import ClinicTable from './ClinicTable.vue'
 import ClinicCard from './ClinicCard.vue'
@@ -47,6 +47,11 @@ import {
   orderBy,
   limit,
 } from 'firebase/firestore'
+
+const { collectionName, title } = defineProps({
+  collectionName: String,
+  title: String,
+})
 
 const clinics = ref([])
 // Copy the clinic data for editing
@@ -65,10 +70,8 @@ const newClinic = ref({
   hours: '',
 })
 
-// Check if the screen size is desktop or mobile
+// Check if the screen size is desktop or mobile and update the isDesktop value accordingly
 const isDesktop = ref(window.innerWidth >= 768)
-
-// Update the isDesktop value based on the screen size
 const updateIsDesktop = () => {
   isDesktop.value = window.innerWidth >= 768
 }
@@ -83,6 +86,18 @@ onMounted(() => {
 // Remove the event listener when the component is unmounted
 onUnmounted(() => {
   window.removeEventListener('resize', updateIsDesktop)
+})
+
+watchEffect(async () => {
+  if (collectionName) {
+    try {
+      const q = query(collection(db, collectionName), orderBy('name'), limit(10))
+      const querySnapshot = await getDocs(q)
+      clinics.value = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
+    } catch (error) {
+      console.error(`Error fetching clinics from ${collectionName}:`, error)
+    }
+  }
 })
 
 // Fetches clinics from the Firestore database based on the provided collection name.
@@ -100,18 +115,19 @@ const fetchclinics = async () => {
 
 const addClinic = async () => {
   try {
+    // TODO: Add validation for required fields
     if (!newClinic.value.name || !newClinic.value.streetName) {
       alert('Please fill in all required fields.')
       return
     }
     // Add the new clinic to Firestore
-    const clinicRef = await addDoc(collection(db, 'healthClinics'), newClinic.value)
+    const clinicRef = await addDoc(collection(db, collectionName), newClinic.value)
     clinics.value.push({ id: clinicRef.id, ...newClinic.value })
 
     alert('Clinic added successfully!')
     clearNewClinic()
   } catch (error) {
-    console.error('Error adding clinic:', error)
+    console.error(`Error adding clinic to ${collectionName}:`, error)
   }
 }
 
@@ -123,12 +139,12 @@ const deleteClinic = async (id) => {
       return
     }
     // Delete the clinic from Firestore
-    await deleteDoc(doc(db, 'clinics', id))
+    await deleteDoc(doc(db, collectionName, id))
     // Remove the clinic from the local array
     clinics.value = clinics.value.filter((clinic) => clinic.id !== id)
     alert('clinic deleted successfully!')
   } catch (error) {
-    console.error('Error deleting clinic:', error)
+    console.error(`Error deleting clinic from ${collectionName}:`, error)
   }
 }
 
@@ -143,7 +159,7 @@ const startEdit = (clinic) => {
 const saveEdit = async (clinic) => {
   try {
     // Update the clinic in Firestore
-    const clinicRef = doc(db, 'healthClinics', clinic.id)
+    const clinicRef = doc(db, collectionName, clinic.id)
     await updateDoc(clinicRef, clinic)
     // Update the clinic in the local array
     const index = clinics.value.findIndex((c) => c.id === clinic.id)
@@ -156,7 +172,7 @@ const saveEdit = async (clinic) => {
 
     alert('clinic updated successfully!')
   } catch (error) {
-    console.error('Error updating clinic:', error)
+    console.error(`Error updating clinic in ${collectionName}:`, error)
   }
 }
 // Cancel the editing state

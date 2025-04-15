@@ -83,7 +83,7 @@
             </ul>
           </li>
 
-          <li class="nav-item dropdown mx-3" v-if="isAuthenticated">
+          <li class="nav-item dropdown mx-3" v-if="authStore.isAuthenticated">
             <router-link
               class="nav-link dropdown-toggle"
               to="/education"
@@ -117,7 +117,7 @@
             </ul>
           </li>
 
-          <li class="nav-item dropdown mx-3" v-if="isAuthenticated">
+          <li class="nav-item dropdown mx-3" v-if="authStore.isAuthenticated">
             <router-link
               class="nav-link dropdown-toggle"
               to="/community"
@@ -162,7 +162,7 @@
                   >Frequently Asked Questions</router-link
                 >
               </li>
-              <li v-if="isAuthenticated">
+              <li v-if="authStore.isAuthenticated">
                 <router-link to="/additional#download" class="dropdown-item"
                   >Downloadable Guides</router-link
                 >
@@ -203,7 +203,7 @@
         </ul>
       </div>
       <ul class="navbar-nav nav-pills ms-auto">
-        <li class="nav-item" v-if="!isAuthenticated">
+        <li class="nav-item" v-if="!authStore.isAuthenticated">
           <router-link to="/login" class="nav-link" active-class="active">Login</router-link>
         </li>
         <li class="nav-item dropdown ms-auto" v-else>
@@ -236,22 +236,19 @@
 </template>
 
 <script setup>
-import { userRole, isAuthenticated, setAuthStatus } from '../stores/auth'
+import { useAuthStore } from '@/stores/auth'
 import { useRouter } from 'vue-router'
 import { computed } from 'vue'
 
 const router = useRouter()
+const authStore = useAuthStore()
 
 // Reactive admin check
-const admin = computed(() => userRole.value === 'admin')
-
-setAuthStatus()
+const admin = computed(() => authStore.userRole === 'admin')
 
 // Function to log out the user, removing authentication status from session storage, and redirecting to the home page
 const logout = () => {
-  sessionStorage.removeItem('isAuthenticated')
-  sessionStorage.removeItem('userRole')
-  isAuthenticated.value = false
+  authStore.logout()
   router.push({ name: 'Home' })
 }
 </script>
