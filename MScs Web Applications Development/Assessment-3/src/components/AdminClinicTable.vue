@@ -2,14 +2,33 @@
   <div class="row justify-content-center">
     <div class="col-md-12">
       <h1 class="text-center mt-4">{{ title }}</h1>
-      <div class="d-flex justify-content-end mb-3">
-        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addClinicModal">
-          Add New Clinic
+      <div class="d-flex justify-content-end my-3">
+        <!-- Search Input -->
+        <div class="input-group" style="height: 30px">
+          <input
+            style="height: 30px; font-size: 14px"
+            type="text"
+            class="form-control"
+            placeholder="Search clinics..."
+            v-model="searchQuery"
+          />
+          <span class="input-group-text" style="height: 30px">
+            <i class="bi bi-search"></i>
+          </span>
+        </div>
+
+        <button
+          class="btn btn-primary"
+          style="height: 30px; width: 10%; font-size: 14px"
+          data-bs-toggle="modal"
+          data-bs-target="#addClinicModal"
+        >
+          Add new clinic
         </button>
       </div>
       <ClinicTable
         v-if="isDesktop"
-        :clinics="clinics"
+        :clinics="filteredClinics"
         :editing-row-id="editingRowId"
         @edit="startEdit"
         @delete="deleteClinic"
@@ -17,8 +36,9 @@
         @cancelEdit="cancelEdit"
       />
       <ClinicCard
+        class="mb-5"
         v-else
-        :clinics="clinics"
+        :clinics="filteredClinics"
         :editing-row-id="editingRowId"
         @edit="startEdit"
         @delete="deleteClinic"
@@ -31,7 +51,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted, watchEffect } from 'vue'
+import { ref, onMounted, onUnmounted, watchEffect, computed } from 'vue'
 import db from '../firebase/init.js'
 import ClinicTable from './ClinicTable.vue'
 import ClinicCard from './ClinicCard.vue'
@@ -48,12 +68,15 @@ import {
   limit,
 } from 'firebase/firestore'
 
+// Destructure the props passed to the component
 const { collectionName, title } = defineProps({
   collectionName: String,
   title: String,
 })
 
 const clinics = ref([])
+// Search query for filtering clinics
+const searchQuery = ref('')
 // Copy the clinic data for editing
 const editingclinic = ref(null)
 // Set the editing row ID
@@ -88,6 +111,7 @@ onUnmounted(() => {
   window.removeEventListener('resize', updateIsDesktop)
 })
 
+// Watch for changes in the collectionName prop and fetch clinics accordingly
 watchEffect(async () => {
   if (collectionName) {
     try {
@@ -103,7 +127,6 @@ watchEffect(async () => {
 // Fetches clinics from the Firestore database based on the provided collection name.
 const fetchclinics = async () => {
   try {
-    // ToDo fix this to change clinics param to query from linked page
     const q = query(collection(db, collectionName), orderBy('name'), limit(10))
     // Get the documents from the collection and map them to the clinics array
     const querySnapshot = await getDocs(q)
@@ -113,6 +136,23 @@ const fetchclinics = async () => {
   }
 }
 
+// Computed property to filter clinics based on the search query
+const filteredClinics = computed(() => {
+  if (!searchQuery.value) return clinics.value
+  const query = searchQuery.value.toLowerCase()
+  return clinics.value.filter(
+    (clinic) =>
+      clinic.name.toLowerCase().includes(query) ||
+      clinic.streetName.toLowerCase().includes(query) ||
+      clinic.suburb.toLowerCase().includes(query) ||
+      clinic.state.toLowerCase().includes(query) ||
+      clinic.postcode.toString().includes(query) ||
+      clinic.phone.toString().includes(query) ||
+      clinic.hours.toLowerCase().includes(query),
+  )
+})
+
+// Add a new clinic to the database and update the clinics array
 const addClinic = async (clinic) => {
   try {
     // TODO: Add validation for required fields
@@ -149,6 +189,7 @@ const deleteClinic = async (id) => {
   }
 }
 
+// Start editing the clinic by copying its data to the editing clinic
 const startEdit = (clinic) => {
   // Copy the clinic data for editing
   editingclinic.value = { ...clinic }
@@ -176,6 +217,7 @@ const saveEdit = async (clinic) => {
     console.error(`Error updating clinic in ${collectionName}:`, error)
   }
 }
+
 // Cancel the editing state
 const cancelEdit = () => {
   // Clear the editing clinic
@@ -183,11 +225,11 @@ const cancelEdit = () => {
   // Clear the editing row ID
   editingRowId.value = null
 }
-// Clear the new clinic data
+
+// Clear the new clinic data by resetting all fields to empty strings
 const clearNewClinic = (clinic) => {
-  // Reset the new clinic data
   Object.keys(clinic).forEach((key) => {
-    clinic[key] = '' // Reset all fields
+    clinic[key] = ''
   })
 }
 </script>

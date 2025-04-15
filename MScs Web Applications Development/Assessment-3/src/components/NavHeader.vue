@@ -32,6 +32,9 @@
             </router-link>
             <ul class="dropdown-menu" aria-labelledby="healthDropdown">
               <li>
+                <router-link to="/health" class="dropdown-item">Health Resources</router-link>
+              </li>
+              <li>
                 <router-link to="/health#general" class="dropdown-item"
                   >General Health Information</router-link
                 >
@@ -96,6 +99,11 @@
               Educational Resources
             </router-link>
             <ul class="dropdown-menu" aria-labelledby="educationDropdown">
+              <li>
+                <router-link to="/education" class="dropdown-item"
+                  >Educational Resources</router-link
+                >
+              </li>
               <li>
                 <router-link to="/education#workshop" class="dropdown-item"
                   >Workshops and Webinars</router-link
@@ -162,6 +170,11 @@
             </router-link>
             <ul class="dropdown-menu" aria-labelledby="additionalDropdown">
               <li>
+                <router-link to="/additional" class="dropdown-item"
+                  >Additional Resources</router-link
+                >
+              </li>
+              <li>
                 <router-link to="/additional#faqs" class="dropdown-item"
                   >Frequently Asked Questions</router-link
                 >
@@ -190,6 +203,9 @@
             </router-link>
             <ul class="dropdown-menu" aria-labelledby="aboutDropdown">
               <li>
+                <router-link to="/about" class="dropdown-item">About Us</router-link>
+              </li>
+              <li>
                 <router-link to="/about#mission" class="dropdown-item">Our Mission</router-link>
               </li>
               <li>
@@ -207,6 +223,7 @@
           </li>
         </ul>
       </div>
+      <!-- Right side of the navbar options depending on authentication status -->
       <ul class="navbar-nav nav-pills ms-auto">
         <li class="nav-item" v-if="!isAuthenticated">
           <router-link to="/login" class="nav-link" active-class="active">Login</router-link>
@@ -222,7 +239,7 @@
           >
             <i class="bi bi-person-fill" style="font-size: 2rem"></i>
           </router-link>
-
+          <!-- Dropdown menu for user options depending on role-->
           <ul class="dropdown-menu" aria-labelledby="userDropdown">
             <li v-if="admin">
               <router-link to="/admin" class="dropdown-item">Admin Dashboard</router-link>

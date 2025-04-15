@@ -13,7 +13,7 @@
       </span>
     </div>
 
-    <!-- Clinic Cards -->
+    <!-- Display clinic as cards -->
     <div
       class="d-flex flex-wrap justify-content-start"
       v-for="clinic in filteredClinics"

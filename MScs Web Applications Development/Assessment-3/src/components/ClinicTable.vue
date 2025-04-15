@@ -2,6 +2,7 @@
   <table class="table table-striped d-none d-md-table">
     <thead>
       <tr>
+        <!-- Sortable Table Headers -->
         <th @click="sortTable('name')">
           Name <span class="sort-icon">{{ getSortIndicator('name') }}</span>
         </th>
@@ -50,6 +51,7 @@
             </button>
           </td>
         </template>
+
         <!-- Editable Row -->
         <template v-else>
           <td>

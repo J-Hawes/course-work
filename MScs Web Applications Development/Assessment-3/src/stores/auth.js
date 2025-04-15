@@ -27,6 +27,7 @@ export const useAuthStore = defineStore('auth', () => {
     return userRole.value
   }
 
+  // Logout function to clear authentication state and user role from session storage
   const logout = () => {
     isAuthenticated.value = false
     userRole.value = ''

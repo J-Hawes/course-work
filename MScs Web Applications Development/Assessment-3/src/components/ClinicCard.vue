@@ -2,6 +2,7 @@
   <div class="d-md-none">
     <div class="card mb-3" v-for="clinic in clinics" :key="clinic.id">
       <div class="card-body">
+        <!-- Non-Editable Card View -->
         <template v-if="editingRowId !== clinic.id">
           <h5 class="card-title">{{ clinic.name }}</h5>
           <p class="card-text">
@@ -22,6 +23,7 @@
             </button>
           </div>
         </template>
+
         <!-- Editable Card View -->
         <template v-else>
           <div class="floating-label">

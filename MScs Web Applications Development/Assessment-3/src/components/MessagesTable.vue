@@ -141,6 +141,7 @@ const printMessage = () => {
   printWindow.document.close()
   printWindow.print()
 }
+
 // Delete a message from Firestore
 const deleteMessage = async (id) => {
   const confirmDelete = window.confirm('Are you sure you want to delete this message?')
