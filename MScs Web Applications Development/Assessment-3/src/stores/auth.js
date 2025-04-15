@@ -34,6 +34,10 @@ export const useAuthStore = defineStore('auth', () => {
     sessionStorage.removeItem('userRole')
   }
 
+  // Restore state on initialization
+  getAuthStatus()
+  getUserRole()
+
   return {
     isAuthenticated,
     userRole,

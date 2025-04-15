@@ -2,20 +2,34 @@
   <table class="table table-striped d-none d-md-table">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Street Address</th>
-        <th>Suburb</th>
-        <th>State</th>
-        <th>Postcode</th>
-        <th>Phone</th>
-        <th>Opening Hours</th>
+        <th @click="sortTable('name')">
+          Name <span class="sort-icon">{{ getSortIndicator('name') }}</span>
+        </th>
+        <th @click="sortTable('streetName')">
+          Street Address <span class="sort-icon">{{ getSortIndicator('streetName') }}</span>
+        </th>
+        <th @click="sortTable('suburb')">
+          Suburb <span class="sort-icon">{{ getSortIndicator('suburb') }}</span>
+        </th>
+        <th @click="sortTable('state')">
+          State <span class="sort-icon">{{ getSortIndicator('state') }}</span>
+        </th>
+        <th @click="sortTable('postcode')">
+          Postcode <span class="sort-icon">{{ getSortIndicator('postcode') }}</span>
+        </th>
+        <th @click="sortTable('phone')">
+          Phone <span class="sort-icon">{{ getSortIndicator('phone') }}</span>
+        </th>
+        <th @click="sortTable('hours')">
+          Opening Hours <span class="sort-icon">{{ getSortIndicator('hours') }}</span>
+        </th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>
     </thead>
     <tbody>
       <!-- Existing Clinics Rows -->
-      <tr v-for="clinic in clinics" :key="clinic.id">
+      <tr v-for="clinic in sortedClinics" :key="clinic.id">
         <template v-if="editingRowId !== clinic.id">
           <td>{{ clinic.name }}</td>
           <td>{{ clinic.streetNumber }}, {{ clinic.streetName }}</td>
@@ -124,8 +138,47 @@
 </template>
 
 <script setup>
-defineProps(['clinics', 'editingRowId'])
+import { ref, computed } from 'vue'
+// Destructure props
+const { clinics, editingRowId } = defineProps(['clinics', 'editingRowId'])
+
 defineEmits(['edit', 'delete', 'saveEdit', 'cancelEdit'])
+
+// State for sorting
+const sortKey = ref('name') // Default sort column
+const sortOrder = ref('asc') // Default sort order ('asc' or 'desc')
+
+// Function to sort the table
+const sortTable = (key) => {
+  if (sortKey.value === key) {
+    // Toggle sort order if the same column is clicked
+    sortOrder.value = sortOrder.value === 'asc' ? 'desc' : 'asc'
+  } else {
+    // Set new sort key and default to ascending order
+    sortKey.value = key
+    sortOrder.value = 'asc'
+  }
+}
+
+// Computed property to return sorted clinics
+const sortedClinics = computed(() => {
+  return [...clinics].sort((a, b) => {
+    const valueA = a[sortKey.value]
+    const valueB = b[sortKey.value]
+
+    if (valueA < valueB) return sortOrder.value === 'asc' ? -1 : 1
+    if (valueA > valueB) return sortOrder.value === 'asc' ? 1 : -1
+    return 0
+  })
+})
+
+// Function to get the sort indicator (e.g., ↑ or ↓)
+const getSortIndicator = (key) => {
+  if (sortKey.value === key) {
+    return sortOrder.value === 'asc' ? '↑' : '↓'
+  }
+  return ''
+}
 </script>
 
 <style scoped>
@@ -133,5 +186,15 @@ defineEmits(['edit', 'delete', 'saveEdit', 'cancelEdit'])
   width: 100%;
   padding: 0.5rem;
   font-size: 0.9rem;
+}
+th {
+  cursor: pointer;
+  user-select: none;
+}
+
+.sort-icon {
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+  color: gray;
 }
 </style>

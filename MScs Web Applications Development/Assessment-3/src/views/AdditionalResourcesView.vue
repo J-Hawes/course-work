@@ -50,11 +50,14 @@
 </template>
 
 <script setup>
-import { isAuthenticated, updateAuthStatus } from '../stores/auth'
+import { computed } from 'vue'
+import { useAuthStore } from '@/stores/auth'
 import DownloadeGuides from './DownloadGuides.vue'
 import FrequentQuestions from './FrequentQuestions.vue'
 import LegalRights from './LegalRights.vue'
-updateAuthStatus()
+
+const authStore = useAuthStore()
+const isAuthenticated = computed(() => authStore.isAuthenticated)
 </script>
 
 <style scoped>

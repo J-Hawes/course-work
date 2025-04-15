@@ -45,14 +45,16 @@
 </template>
 
 <script setup>
-import { isAuthenticated, updateAuthStatus } from '../stores/auth'
-import { ref, onMounted, watch } from 'vue'
+import { useAuthStore } from '@/stores/auth.js'
+import { onMounted, watch, computed, markRaw, shallowRef } from 'vue'
 import { useRoute } from 'vue-router'
 import db from '../firebase/init.js'
 import { collection, getDocs, orderBy, query } from 'firebase/firestore'
 
-const clinics = ref([])
+const clinics = shallowRef([])
 const route = useRoute()
+const authStore = useAuthStore()
+const isAuthenticated = computed(() => authStore.isAuthenticated)
 
 // Fetches clinics from the Firestore database based on the provided collection name.
 const fetchClinics = async (collectionName) => {
@@ -61,7 +63,7 @@ const fetchClinics = async (collectionName) => {
     const querySnapshot = await getDocs(q)
     const clinicsArray = []
     querySnapshot.forEach((doc) => {
-      clinicsArray.push({ id: doc.id, ...doc.data() })
+      clinicsArray.push(markRaw({ id: doc.id, ...doc.data() }))
     })
     clinics.value = clinicsArray
   } catch (error) {
@@ -83,7 +85,6 @@ watch(
 // Watches for changes in the authentication status and updates the clinics list accordingly.
 // This is used for changing the button from 'log in' to 'make a booking'.
 onMounted(() => {
-  updateAuthStatus()
   if (route.query.services) {
     fetchClinics(route.query.services)
   }

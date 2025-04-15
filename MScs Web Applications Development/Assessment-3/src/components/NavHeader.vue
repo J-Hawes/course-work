@@ -83,7 +83,7 @@
             </ul>
           </li>
 
-          <li class="nav-item dropdown mx-3" v-if="authStore.isAuthenticated">
+          <li class="nav-item dropdown mx-3" v-if="isAuthenticated">
             <router-link
               class="nav-link dropdown-toggle"
               to="/education"
@@ -117,7 +117,7 @@
             </ul>
           </li>
 
-          <li class="nav-item dropdown mx-3" v-if="authStore.isAuthenticated">
+          <li class="nav-item dropdown mx-3" v-if="isAuthenticated">
             <router-link
               class="nav-link dropdown-toggle"
               to="/community"
@@ -162,7 +162,7 @@
                   >Frequently Asked Questions</router-link
                 >
               </li>
-              <li v-if="authStore.isAuthenticated">
+              <li v-if="isAuthenticated">
                 <router-link to="/additional#download" class="dropdown-item"
                   >Downloadable Guides</router-link
                 >
@@ -203,8 +203,24 @@
         </ul>
       </div>
       <ul class="navbar-nav nav-pills ms-auto">
-        <li class="nav-item" v-if="!authStore.isAuthenticated">
+        <li class="nav-item" v-if="!isAuthenticated">
           <router-link to="/login" class="nav-link" active-class="active">Login</router-link>
+        </li>
+        <li class="nav-item dropdown ms-auto" v-if="admin">
+          <router-link
+            to="/admin"
+            class="nav-link dropdown-toggle"
+            id="userDropdown"
+            aria-expanded="false"
+            active-class="active"
+          >
+            <i class="material-icons" style="font-size: 36px">person</i>
+          </router-link>
+          <ul class="dropdown-menu" aria-labelledby="userDropdown">
+            <li>
+              <a href="#" class="dropdown-item" @click.prevent="logout">Logout</a>
+            </li>
+          </ul>
         </li>
         <li class="nav-item dropdown ms-auto" v-else>
           <router-link
@@ -216,15 +232,7 @@
           >
             <i class="material-icons" style="font-size: 36px">person</i>
           </router-link>
-
           <ul class="dropdown-menu" aria-labelledby="userDropdown">
-            <li v-if="admin">
-              <router-link to="/admin" class="dropdown-item">Admin Dashboard</router-link>
-            </li>
-            <li v-else>
-              <router-link to="/user" class="dropdown-item">User Dashboard</router-link>
-            </li>
-
             <li>
               <a href="#" class="dropdown-item" @click.prevent="logout">Logout</a>
             </li>
@@ -245,6 +253,8 @@ const authStore = useAuthStore()
 
 // Reactive admin check
 const admin = computed(() => authStore.userRole === 'admin')
+
+const isAuthenticated = computed(() => authStore.isAuthenticated)
 
 // Function to log out the user, removing authentication status from session storage, and redirecting to the home page
 const logout = () => {
