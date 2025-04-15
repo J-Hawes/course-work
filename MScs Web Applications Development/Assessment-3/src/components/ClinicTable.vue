@@ -29,7 +29,7 @@
     </thead>
     <tbody>
       <!-- Existing Clinics Rows -->
-      <tr v-for="clinic in sortedClinics" :key="clinic.id">
+      <tr v-for="clinic in paginatedClinics" :key="clinic.id">
         <template v-if="editingRowId !== clinic.id">
           <td>{{ clinic.name }}</td>
           <td>{{ clinic.streetNumber }}, {{ clinic.streetName }}</td>
@@ -135,6 +135,27 @@
       </tr>
     </tbody>
   </table>
+
+  <!-- Pagination Controls -->
+  <div class="my-3">
+    <div class="pagination-controls mb-5">
+      <button
+        class="btn btn-secondary btn-sm"
+        :disabled="currentPage === 1"
+        @click="changePage(currentPage - 1)"
+      >
+        Previous
+      </button>
+      <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      <button
+        class="btn btn-secondary btn-sm"
+        :disabled="currentPage === totalPages"
+        @click="changePage(currentPage + 1)"
+      >
+        Next
+      </button>
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -148,10 +169,14 @@ defineEmits(['edit', 'delete', 'saveEdit', 'cancelEdit'])
 const sortKey = ref('name') // Default sort column
 const sortOrder = ref('asc') // Default sort order ('asc' or 'desc')
 
+// Pagination state
+const currentPage = ref(1) // Current page
+const rowsPerPage = ref(5) // Rows per page
+
 // Function to sort the table
 const sortTable = (key) => {
   if (sortKey.value === key) {
-    // Toggle sort order if the same column is clicked
+    // Toggle sort order when the column is clicked
     sortOrder.value = sortOrder.value === 'asc' ? 'desc' : 'asc'
   } else {
     // Set new sort key and default to ascending order
@@ -172,13 +197,29 @@ const sortedClinics = computed(() => {
   })
 })
 
-// Function to get the sort indicator (e.g., ↑ or ↓)
+// Function to get the sort arrow indicator depending on the current sort key and order
 const getSortIndicator = (key) => {
   if (sortKey.value === key) {
     return sortOrder.value === 'asc' ? '↑' : '↓'
   }
   return ''
 }
+
+// Computed property to return paginated results
+const paginatedClinics = computed(() => {
+  const start = (currentPage.value - 1) * rowsPerPage.value
+  const end = start + rowsPerPage.value
+  return sortedClinics.value.slice(start, end)
+})
+
+// Function to change the page
+const changePage = (page) => {
+  currentPage.value = page
+}
+
+const totalPages = computed(() => {
+  return Math.ceil(sortedClinics.value.length / rowsPerPage.value)
+})
 </script>
 
 <style scoped>
@@ -196,5 +237,17 @@ th {
   margin-left: 0.5rem;
   font-size: 0.8rem;
   color: gray;
+}
+
+.pagination-controls {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+.btn-secondary {
+  background-color: hsla(160, 100%, 37%, 0.5);
+  border-color: #6c757d;
 }
 </style>

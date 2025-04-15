@@ -125,7 +125,7 @@ const addClinic = async (clinic) => {
     clinics.value.push({ id: clinicRef.id, ...clinic })
 
     alert('Clinic added successfully!')
-    clearNewClinic()
+    clearNewClinic(clinic)
     fetchclinics()
   } catch (error) {
     console.error(`Error adding clinic to ${collectionName}:`, error)

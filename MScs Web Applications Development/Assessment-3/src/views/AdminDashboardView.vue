@@ -86,7 +86,7 @@
 
 <script setup>
 import { ref, onMounted } from 'vue'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, onSnapshot } from 'firebase/firestore'
 import db from '@/firebase/init.js'
 import AdminClinicTable from '@/components/AdminClinicTable.vue'
 import MessagesTable from '@/components/MessagesTable.vue'
@@ -114,23 +114,27 @@ const loadMessages = () => {
 }
 
 // Fetch dashboard data to populate the cards
-const fetchDashboardData = async () => {
+const fetchDashboardData = () => {
   try {
     // Fetch user count
-    const usersSnapshot = await getDocs(collection(db, 'users'))
-    userCount.value = usersSnapshot.size
+    onSnapshot(collection(db, 'users'), (snapshot) => {
+      userCount.value = snapshot.size
+    })
 
     // Fetch health clinics count
-    const healthClinicsSnapshot = await getDocs(collection(db, 'healthClinics'))
-    healthClinicCount.value = healthClinicsSnapshot.size
+    onSnapshot(collection(db, 'healthClinics'), (snapshot) => {
+      healthClinicCount.value = snapshot.size
+    })
 
     // Fetch mental health clinics count
-    const mentalHealthClinicsSnapshot = await getDocs(collection(db, 'mentalHealthClinics'))
-    mentalHealthClinicCount.value = mentalHealthClinicsSnapshot.size
+    onSnapshot(collection(db, 'mentalHealthClinics'), (snapshot) => {
+      mentalHealthClinicCount.value = snapshot.size
+    })
 
     // Fetch new messages count
-    const messagesSnapshot = await getDocs(collection(db, 'contactFormMessages'))
-    newMessagesCount.value = messagesSnapshot.size
+    onSnapshot(collection(db, 'contactFormMessages'), (snapshot) => {
+      newMessagesCount.value = snapshot.size
+    })
   } catch (error) {
     console.error('Error fetching dashboard data:', error)
   }
