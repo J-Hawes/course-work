@@ -184,9 +184,10 @@ const cancelEdit = () => {
   editingRowId.value = null
 }
 // Clear the new clinic data
-const clearNewClinic = () => {
-  Object.keys(newClinic).forEach((key) => {
-    newClinic[key] = '' // Reset all fields
+const clearNewClinic = (clinic) => {
+  // Reset the new clinic data
+  Object.keys(clinic).forEach((key) => {
+    clinic[key] = '' // Reset all fields
   })
 }
 </script>

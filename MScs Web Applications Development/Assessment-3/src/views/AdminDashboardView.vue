@@ -129,7 +129,7 @@ const fetchDashboardData = async () => {
     mentalHealthClinicCount.value = mentalHealthClinicsSnapshot.size
 
     // Fetch new messages count
-    const messagesSnapshot = await getDocs(collection(db, 'contact'))
+    const messagesSnapshot = await getDocs(collection(db, 'contactFormMessages'))
     newMessagesCount.value = messagesSnapshot.size
   } catch (error) {
     console.error('Error fetching dashboard data:', error)

@@ -12,6 +12,9 @@
     </div>
     <div class="d-flex justify-content-end">
       <button class="btn btn-success btn-sm me-2" @click="$emit('save', localClinic)">Save</button>
+      <button class="btn btn-success btn-sm me-2" @click="$emit('clear', localClinic)">
+        clear
+      </button>
     </div>
   </div>
 </template>
@@ -20,7 +23,7 @@
 import { reactive } from 'vue'
 
 const props = defineProps(['clinic'])
-defineEmits(['save'])
+defineEmits(['save', 'clear'])
 const localClinic = reactive({ ...props.clinic })
 </script>
 
