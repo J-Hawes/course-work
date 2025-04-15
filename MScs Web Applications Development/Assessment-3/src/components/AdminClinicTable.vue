@@ -104,7 +104,7 @@ watchEffect(async () => {
 const fetchclinics = async () => {
   try {
     // ToDo fix this to change clinics param to query from linked page
-    const q = query(collection(db, 'healthClinics'), orderBy('name'), limit(10))
+    const q = query(collection(db, collectionName), orderBy('name'), limit(10))
     // Get the documents from the collection and map them to the clinics array
     const querySnapshot = await getDocs(q)
     clinics.value = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }))
@@ -113,19 +113,20 @@ const fetchclinics = async () => {
   }
 }
 
-const addClinic = async () => {
+const addClinic = async (clinic) => {
   try {
     // TODO: Add validation for required fields
-    if (!newClinic.value.name || !newClinic.value.streetName) {
+    if (!clinic.name || !clinic.streetName) {
       alert('Please fill in all required fields.')
       return
     }
     // Add the new clinic to Firestore
-    const clinicRef = await addDoc(collection(db, collectionName), newClinic.value)
-    clinics.value.push({ id: clinicRef.id, ...newClinic.value })
+    const clinicRef = await addDoc(collection(db, collectionName), clinic)
+    clinics.value.push({ id: clinicRef.id, ...clinic })
 
     alert('Clinic added successfully!')
     clearNewClinic()
+    fetchclinics()
   } catch (error) {
     console.error(`Error adding clinic to ${collectionName}:`, error)
   }
@@ -184,15 +185,8 @@ const cancelEdit = () => {
 }
 // Clear the new clinic data
 const clearNewClinic = () => {
-  newClinic.value = {
-    name: '',
-    streetNumber: '',
-    streetName: '',
-    suburb: '',
-    state: '',
-    postcode: '',
-    phone: '',
-    hours: '',
-  }
+  Object.keys(newClinic).forEach((key) => {
+    newClinic[key] = '' // Reset all fields
+  })
 }
 </script>

@@ -18,7 +18,7 @@
           ></button>
         </div>
         <div class="modal-body">
-          <EditClinicForm :clinic="newClinic" @save="addClinic" @cancel="clearNewClinic" />
+          <EditClinicForm :clinic="newClinic" @save="addClinic" />
         </div>
       </div>
     </div>
@@ -33,9 +33,5 @@ const emit = defineEmits(['add', 'clear'])
 
 const addClinic = (clinic) => {
   emit('add', clinic)
-}
-
-const clearNewClinic = () => {
-  emit('clear')
 }
 </script>

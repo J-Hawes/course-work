@@ -5,14 +5,16 @@
       <table class="table table-striped d-md-table">
         <thead>
           <tr>
+            <th style="width: 10%">Date</th>
             <th style="width: 20%">Sender</th>
-            <th style="width: 70%">Subject</th>
+            <th style="width: 60%">Subject</th>
             <th style="width: 5%">Read</th>
             <th style="width: 5%">Delete</th>
           </tr>
         </thead>
         <tbody>
           <tr v-for="message in messages" :key="message.id">
+            <td>{{ formatDate(message.date) }}</td>
             <td>{{ message.email }}</td>
             <td>{{ message.subject }}</td>
             <td>
@@ -59,6 +61,7 @@
           <p>
             <strong>Sender:</strong> {{ selectedMessage.firstname }}, {{ selectedMessage.surname }}
           </p>
+          <p><strong>Date:</strong> {{ formatDate(selectedMessage.date) }}</p>
           <p><strong>Contact Number:</strong> {{ selectedMessage.phone }}</p>
           <p><strong>Email Address:</strong> {{ selectedMessage.email }}</p>
           <p><strong>Subject:</strong> {{ selectedMessage.subject }}</p>
@@ -83,14 +86,15 @@ const messages = ref([])
 // Reactive variable to store the selected message for the modal
 const selectedMessage = ref({})
 
-const { title } = defineProps({
+const { collectionName, title } = defineProps({
+  collectionName: String,
   title: String,
 })
 
 // Fetch messages from Firestore
 const loadMessages = async () => {
   try {
-    const messagesSnapshot = await getDocs(collection(db, 'contact'))
+    const messagesSnapshot = await getDocs(collection(db, collectionName))
     messages.value = messagesSnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
@@ -98,6 +102,16 @@ const loadMessages = async () => {
   } catch (error) {
     console.error('Error fetching messages:', error)
   }
+}
+
+// Format timestamp to dd/mm/yyyy
+const formatDate = (timestamp) => {
+  if (!timestamp) return 'N/A'
+  const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp)
+  const day = String(date.getDate()).padStart(2, '0')
+  const month = String(date.getMonth() + 1).padStart(2, '0') // Months are 0-based
+  const year = date.getFullYear()
+  return `${day}/${month}/${year}`
 }
 
 // View message details (placeholder function)
@@ -111,7 +125,7 @@ const deleteMessage = async (id) => {
   if (!confirmDelete) return
 
   try {
-    await deleteDoc(doc(db, 'contact', id))
+    await deleteDoc(doc(db, 'contactFormMessages', id))
     messages.value = messages.value.filter((message) => message.id !== id)
     alert('Message deleted successfully!')
   } catch (error) {

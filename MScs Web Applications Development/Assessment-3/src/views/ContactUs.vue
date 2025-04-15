@@ -145,7 +145,7 @@
 <script setup>
 import { ref } from 'vue'
 import db from '../firebase/init.js'
-import { collection, addDoc } from 'firebase/firestore'
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
 import {
   validateName,
   validateEmail,
@@ -188,13 +188,14 @@ const submitForm = async () => {
       !errors.value.subject &&
       !errors.value.usermessage
     ) {
-      await addDoc(collection(db, 'contact'), {
+      await addDoc(collection(db, 'contactFormMessages'), {
         firstname: formData.value.firstname,
         surname: formData.value.surname,
         email: formData.value.email,
         phone: formData.value.phone,
         subject: formData.value.subject,
         usermessage: formData.value.usermessage,
+        date: serverTimestamp(),
       })
       alert('Message submitted successfully!')
     }

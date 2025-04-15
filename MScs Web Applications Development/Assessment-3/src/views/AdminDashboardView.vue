@@ -77,7 +77,7 @@
         <AdminClinicTable collectionName="mentalHealthClinics" title="Mental Health Clinics" />
       </div>
       <div v-else-if="selectedCollection === 'messages'">
-        <MessagesTable title="Messages" />
+        <MessagesTable collectionName="contactFormMessages" title="Messages" />
       </div>
       <div v-else></div>
     </div>

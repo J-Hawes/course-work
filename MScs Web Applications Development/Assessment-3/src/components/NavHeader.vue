@@ -25,6 +25,7 @@
               class="nav-link dropdown-toggle"
               to="/health"
               id="healthDropdown"
+              data-bs-toggle="dropdown"
               aria-expanded="false"
               active-class="active"
             >
@@ -57,6 +58,7 @@
               class="nav-link dropdown-toggle"
               to="/services"
               id="servicesDropdown"
+              data-bs-toggle="dropdown"
               aria-expanded="false"
               active-class="active"
             >
@@ -88,6 +90,7 @@
               class="nav-link dropdown-toggle"
               to="/education"
               id="educationDropdown"
+              data-bs-toggle="dropdown"
               aria-expanded="false"
               active-class="active"
             >
@@ -122,6 +125,7 @@
               class="nav-link dropdown-toggle"
               to="/community"
               id="communityDropdown"
+              data-bs-toggle="dropdown"
               aria-expanded="false"
               active-class="active"
             >
@@ -151,6 +155,7 @@
               class="nav-link dropdown-toggle"
               to="/additional"
               id="additionalDropdown"
+              data-bs-toggle="dropdown"
               aria-expanded="false"
               active-class="active"
             >
@@ -178,6 +183,7 @@
               to="/about"
               class="nav-link dropdown-toggle"
               id="aboutDropdown"
+              data-bs-toggle="dropdown"
               aria-expanded="false"
               active-class="active"
             >
@@ -206,33 +212,26 @@
         <li class="nav-item" v-if="!isAuthenticated">
           <router-link to="/login" class="nav-link" active-class="active">Login</router-link>
         </li>
-        <li class="nav-item dropdown ms-auto" v-if="admin">
-          <router-link
-            to="/admin"
-            class="nav-link dropdown-toggle"
-            id="userDropdown"
-            aria-expanded="false"
-            active-class="active"
-          >
-            <i class="material-icons" style="font-size: 36px">person</i>
-          </router-link>
-          <ul class="dropdown-menu" aria-labelledby="userDropdown">
-            <li>
-              <a href="#" class="dropdown-item" @click.prevent="logout">Logout</a>
-            </li>
-          </ul>
-        </li>
         <li class="nav-item dropdown ms-auto" v-else>
           <router-link
             to="/user"
             class="nav-link dropdown-toggle"
             id="userDropdown"
+            data-bs-toggle="dropdown"
             aria-expanded="false"
             active-class="active"
           >
             <i class="material-icons" style="font-size: 36px">person</i>
           </router-link>
+
           <ul class="dropdown-menu" aria-labelledby="userDropdown">
+            <li v-if="admin">
+              <router-link to="/admin" class="dropdown-item">Admin Dashboard</router-link>
+            </li>
+            <li v-else>
+              <router-link to="/user" class="dropdown-item">User Dashboard</router-link>
+            </li>
+
             <li>
               <a href="#" class="dropdown-item" @click.prevent="logout">Logout</a>
             </li>
@@ -272,9 +271,14 @@ const logout = () => {
   height: 1rem;
   background-size: contain;
 }
-.navbar-nav .dropdown:hover .dropdown-menu {
-  display: block;
+
+/* Hover behavior for dropdowns on larger screens */
+@media (min-width: 768px) {
+  .navbar-nav .dropdown:hover .dropdown-menu {
+    display: block;
+  }
 }
+
 .navbar-nav .dropdown:hover .nav-link {
   color: hsla(160, 100%, 37%, 1);
 }
