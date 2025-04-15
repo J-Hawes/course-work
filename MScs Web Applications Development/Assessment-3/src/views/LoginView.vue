@@ -23,37 +23,48 @@
 
 <script setup>
 import { ref } from 'vue'
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
-import { doc, getDoc } from 'firebase/firestore'
 import { useRouter } from 'vue-router'
-import { updateAuthStatus } from '../stores/auth'
+import { useFirebaseAuth } from 'vuefire'
+import { doc, getDoc } from 'firebase/firestore'
+import { signInWithEmailAndPassword } from 'firebase/auth'
 import db from '../firebase/init.js'
+import { isAuthenticated, setUserRole } from '@/stores/auth.js'
 
 const email = ref('')
 const password = ref('')
 const router = useRouter()
-const auth = getAuth()
+const auth = useFirebaseAuth()
 
 // Sign in with Firebase
-const signin = () => {
-  signInWithEmailAndPassword(auth, email.value, password.value)
-    .then(async (data) => {
-      sessionStorage.setItem('isAuthenticated', true)
-      updateAuthStatus()
-      const userDoc = await getDoc(doc(db, 'users', data.user.uid))
-      if (userDoc.exists()) {
-        const userData = userDoc.data()
-        console.log('User Role:', userData.role)
-      } else {
-        console.log('No such document!')
-      }
-      router.push('/')
-    })
-    .catch((error) => {
-      console.log(error)
-    })
+const signin = async () => {
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email.value, password.value)
+
+    // Get the signed-in user's UID
+    const userId = userCredential.user.uid
+
+    // Bind the user's Firestore document to a reactive variable
+    const userDocRef = doc(db, 'users', userId)
+    const userDoc = await getDoc(userDocRef)
+
+    // Check if the document exists, retrieve the user's role and store it in session storage
+    if (userDoc.exists()) {
+      const role = userDoc.data().role
+      setUserRole(role)
+    } else {
+      console.log('No such document!')
+    }
+    // Store the authentication status in session storage
+    sessionStorage.setItem('isAuthenticated', true)
+    // Redirect to the home page after successful sign-in
+    isAuthenticated.value = true
+    router.push('/')
+  } catch (error) {
+    console.log('Error signing in: ', error)
+  }
 }
 
+// Function to redirect to the registration page
 const register = () => {
   router.push({ name: 'Register' })
 }

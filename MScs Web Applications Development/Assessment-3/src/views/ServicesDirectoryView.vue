@@ -13,7 +13,7 @@
 <script setup>
 import { ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import ClinicList from '../components/ClinicList.vue'
+import ServicesClinicList from '@/components/ServicesClinicList.vue'
 
 const currentComponent = ref(null)
 const route = useRoute()
@@ -21,7 +21,7 @@ const route = useRoute()
 // Function to load the component based on the route query parameters
 function loadComponent(services) {
   if (services) {
-    currentComponent.value = ClinicList
+    currentComponent.value = ServicesClinicList
   } else {
     currentComponent.value = null
   }

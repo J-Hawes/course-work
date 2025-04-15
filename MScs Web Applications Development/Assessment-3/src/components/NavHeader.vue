@@ -218,9 +218,13 @@
           </router-link>
 
           <ul class="dropdown-menu" aria-labelledby="userDropdown">
-            <li>
+            <li v-if="admin">
+              <router-link to="/admin" class="dropdown-item">Admin Dashboard</router-link>
+            </li>
+            <li v-else>
               <router-link to="/user" class="dropdown-item">User Dashboard</router-link>
             </li>
+
             <li>
               <a href="#" class="dropdown-item" @click.prevent="logout">Logout</a>
             </li>
@@ -232,16 +236,21 @@
 </template>
 
 <script setup>
-import { isAuthenticated, updateAuthStatus } from '../stores/auth'
+import { userRole, isAuthenticated, setAuthStatus } from '../stores/auth'
 import { useRouter } from 'vue-router'
+import { computed } from 'vue'
 
 const router = useRouter()
 
-updateAuthStatus()
+// Reactive admin check
+const admin = computed(() => userRole.value === 'admin')
+
+setAuthStatus()
 
 // Function to log out the user, removing authentication status from session storage, and redirecting to the home page
 const logout = () => {
   sessionStorage.removeItem('isAuthenticated')
+  sessionStorage.removeItem('userRole')
   isAuthenticated.value = false
   router.push({ name: 'Home' })
 }

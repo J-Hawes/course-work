@@ -13,32 +13,34 @@ const router = createRouter({
     {
       path: '/health',
       name: 'Health',
-      component: () => import('../views/HealthResources.vue'),
+      component: () => import('../views/HealthResourcesView.vue'),
     },
     {
       path: '/services',
       name: 'Services',
-      component: () => import('../views/ServicesDirectory.vue'),
+      component: () => import('../views/ServicesDirectoryView.vue'),
     },
     {
       path: '/education',
       name: 'Education',
-      component: () => import('../views/EducationResources.vue'),
+      component: () => import('../views/EducationResourcesView.vue'),
     },
     {
       path: '/community',
       name: 'Community',
-      component: () => import('../views/CommunityForum.vue'),
+      component: () => import('../views/CommunityForumView.vue'),
+      // This route is protected and requires authentication
+      meta: { requiresAuth: true },
     },
     {
       path: '/additional',
       name: 'Additional',
-      component: () => import('../views/AdditionalResources.vue'),
+      component: () => import('../views/AdditionalResourcesView.vue'),
     },
     {
       path: '/about',
       name: 'About',
-      component: () => import('../views/AboutView.vue'),
+      component: () => import('../views/AboutUsView.vue'),
     },
     {
       path: '/login',
@@ -51,9 +53,18 @@ const router = createRouter({
       component: () => import('../views/RegisterView.vue'),
     },
     {
+      path: '/admin',
+      name: 'Admin',
+      component: () => import('../views/AdminDashboardView.vue'),
+      // This route is protected and requires authentication
+      meta: { requiresAuth: true },
+    },
+    {
       path: '/user',
       name: 'User',
-      component: () => import('../views/UserDashboard.vue'),
+      component: () => import('../views/UserDashboardView.vue'),
+      // This route is protected and requires authentication
+      meta: { requiresAuth: true },
     },
   ],
   // This option is used to scroll to the top of the page when navigating to a new route
