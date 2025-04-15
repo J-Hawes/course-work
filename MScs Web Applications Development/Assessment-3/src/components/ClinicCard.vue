@@ -15,10 +15,10 @@
           <p class="card-text"><strong>Hours:</strong> {{ clinic.hours }}</p>
           <div class="d-flex justify-content-end">
             <button class="btn btn-warning btn-sm me-2" @click="$emit('edit', clinic)">
-              <i class="material-icons">edit</i>
+              <i class="bi bi-pencil"></i>
             </button>
             <button class="btn btn-danger btn-sm" @click="$emit('delete', clinic.id)">
-              <i class="material-icons">delete</i>
+              <i class="bi bi-trash3"></i>
             </button>
           </div>
         </template>

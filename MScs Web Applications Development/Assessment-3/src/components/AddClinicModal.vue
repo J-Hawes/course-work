@@ -18,7 +18,7 @@
           ></button>
         </div>
         <div class="modal-body">
-          <EditClinicForm :clinic="newClinic" @save="addClinic" @clear="clearNewClinic" />
+          <EditClinicForm :clinic="newClinic" @clear="clearNewClinic" @save="addClinic" />
         </div>
       </div>
     </div>

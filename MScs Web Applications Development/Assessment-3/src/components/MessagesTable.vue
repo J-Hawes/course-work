@@ -58,17 +58,18 @@
           ></button>
         </div>
         <div class="modal-body">
+          <p><strong>Date:</strong> {{ formatDate(selectedMessage.date) }}</p>
           <p>
             <strong>Sender:</strong> {{ selectedMessage.firstname }}, {{ selectedMessage.surname }}
           </p>
-          <p><strong>Date:</strong> {{ formatDate(selectedMessage.date) }}</p>
-          <p><strong>Contact Number:</strong> {{ selectedMessage.phone }}</p>
           <p><strong>Email Address:</strong> {{ selectedMessage.email }}</p>
+          <p><strong>Contact Number:</strong> {{ selectedMessage.phone }}</p>
           <p><strong>Subject:</strong> {{ selectedMessage.subject }}</p>
           <p><strong>Message:</strong> {{ selectedMessage.usermessage }}</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" @click="printMessage">Print</button>
         </div>
       </div>
     </div>
@@ -119,6 +120,27 @@ const viewMessage = (message) => {
   selectedMessage.value = message
 }
 
+// Print message details
+const printMessage = () => {
+  if (!selectedMessage.value) return
+
+  const printContent = `
+    <div>
+      <h3>Message Details</h3>
+      <p><strong>Date:</strong> ${formatDate(selectedMessage.value.date)}</p>
+      <p><strong>Sender:</strong> ${selectedMessage.value.firstname}, ${selectedMessage.value.surname}</p>
+      <p><strong>Email Address:</strong> ${selectedMessage.value.email}</p>
+      <p><strong>Contact Number:</strong> ${selectedMessage.value.phone}</p>
+      <p><strong>Subject:</strong> ${selectedMessage.value.subject}</p>
+      <p><strong>Message:</strong> ${selectedMessage.value.usermessage}</p>
+    </div>
+  `
+
+  const printWindow = window.open('', '_blank')
+  printWindow.document.write(printContent)
+  printWindow.document.close()
+  printWindow.print()
+}
 // Delete a message from Firestore
 const deleteMessage = async (id) => {
   const confirmDelete = window.confirm('Are you sure you want to delete this message?')

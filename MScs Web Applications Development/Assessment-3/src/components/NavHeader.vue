@@ -1,5 +1,4 @@
 <template>
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
   <nav class="navbar navbar-expand-md navbar-light bg-light">
     <div class="container-fluid">
       <button
@@ -219,9 +218,9 @@
             id="userDropdown"
             data-bs-toggle="dropdown"
             aria-expanded="false"
-            active-class="active"
+            :class="{ active: isActive }"
           >
-            <i class="material-icons" style="font-size: 36px">person</i>
+            <i class="bi bi-person-fill" style="font-size: 2rem"></i>
           </router-link>
 
           <ul class="dropdown-menu" aria-labelledby="userDropdown">
@@ -244,7 +243,7 @@
 
 <script setup>
 import { useAuthStore } from '@/stores/auth'
-import { useRouter } from 'vue-router'
+import { useRouter, useRoute } from 'vue-router'
 import { computed } from 'vue'
 
 const router = useRouter()
@@ -254,6 +253,14 @@ const authStore = useAuthStore()
 const admin = computed(() => authStore.userRole === 'admin')
 
 const isAuthenticated = computed(() => authStore.isAuthenticated)
+
+// Reactive route object
+const route = useRoute()
+// Check if the current route is /admin or /user
+// To be able to apply styling to the active link on the person icon
+const isActive = computed(() => {
+  return route.path === '/admin' || route.path === '/user'
+})
 
 // Function to log out the user, removing authentication status from session storage, and redirecting to the home page
 const logout = () => {
@@ -269,6 +276,12 @@ const logout = () => {
     pointer-events: none;
   }
 }
+/* Hover behavior for dropdowns on larger screens */
+@media (min-width: 768px) {
+  .navbar-nav .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+}
 
 .navbar-nav .dropdown-toggle::after {
   display: none;
@@ -277,13 +290,6 @@ const logout = () => {
   width: 1rem;
   height: 1rem;
   background-size: contain;
-}
-
-/* Hover behavior for dropdowns on larger screens */
-@media (min-width: 768px) {
-  .navbar-nav .dropdown:hover .dropdown-menu {
-    display: block;
-  }
 }
 
 .navbar-nav .dropdown:hover .nav-link {

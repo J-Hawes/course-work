@@ -11,10 +11,14 @@
       <label :for="key">{{ key.charAt(0).toUpperCase() + key.slice(1) }}</label>
     </div>
     <div class="d-flex justify-content-end">
-      <button class="btn btn-success btn-sm me-2" @click="$emit('save', localClinic)">Save</button>
-      <button class="btn btn-success btn-sm me-2" @click="$emit('clear', localClinic)">
-        clear
+      <button
+        class="btn btn-secondary btn-sm me-2"
+        data-bs-dismiss="modal"
+        @click="$emit('clear', localClinic)"
+      >
+        Cancel
       </button>
+      <button class="btn btn-success btn-sm me-2" @click="$emit('save', localClinic)">Save</button>
     </div>
   </div>
 </template>
