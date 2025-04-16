@@ -1,5 +1,5 @@
 <template>
-  <div class="row justify-content-center">
+  <div class="row justify-content-center mt-5">
     <div class="col-md-6">
       <h1 class="text-center mb-4">Register an account</h1>
       <div class="row">

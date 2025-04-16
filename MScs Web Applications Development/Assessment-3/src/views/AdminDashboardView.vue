@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container mt-5">
     <div class="text-center">
       <h1>Administration Dashboard</h1>
       <p>Welcome to the admin dashboard!</p>

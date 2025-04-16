@@ -1,5 +1,5 @@
 <template>
-  <div class="row">
+  <div class="row mt-5">
     <div class="row justify-content-center">
       <div class="col-md-6">
         <h1 class="text-center mb-4">Sign in with Firebase</h1>

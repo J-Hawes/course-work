@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container mt-5">
     <h1 class="text-center">User Dashboard</h1>
     <p>Welcome to the user dashboard!</p>
     Not Yet implemented

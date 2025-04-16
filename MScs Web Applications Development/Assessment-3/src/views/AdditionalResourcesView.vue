@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container mt-5">
     <h1>Additional Resources</h1>
     We believe that access to reliable information and services is essential for fostering
     well-being. Our curated selection of resources covers health education, mental health support,

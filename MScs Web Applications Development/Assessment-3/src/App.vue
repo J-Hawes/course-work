@@ -8,7 +8,7 @@ import NavHeader from './components/NavHeader.vue'
     <header>
       <NavHeader />
     </header>
-    <main class="main-box container-fluid mt-5">
+    <main class="main-box container-fluid">
       <div class="col-md-12">
         <router-view />
       </div>
