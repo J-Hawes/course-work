@@ -20,7 +20,12 @@
       <button
         class="btn btn-secondary btn-sm me-2"
         data-bs-dismiss="modal"
-        @click="$emit('clear', localClinic)"
+        @click="
+          () => {
+            resetErrors()
+            $emit('clear', localClinic)
+          }
+        "
       >
         Cancel
       </button>
@@ -34,7 +39,7 @@ import { ref, reactive } from 'vue'
 import { validateName, validatePostcode, validatePhone } from '@/helpers/validation.js'
 
 const props = defineProps(['clinic'])
-defineEmits(['save', 'clear'])
+defineEmits(['save', 'clear', 'reset-errors'])
 const localClinic = reactive({ ...props.clinic })
 
 const errors = ref({
@@ -47,6 +52,19 @@ const errors = ref({
   phone: null,
   hours: null,
 })
+
+const resetErrors = () => {
+  errors.value = {
+    name: null,
+    streetNumber: null,
+    streetName: null,
+    suburb: null,
+    state: null,
+    postcode: null,
+    phone: null,
+    hours: null,
+  }
+}
 
 // Function to validate some of the fields
 // Without integrated maps api to validate a correct address

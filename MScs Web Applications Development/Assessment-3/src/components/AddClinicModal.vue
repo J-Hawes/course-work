@@ -29,7 +29,7 @@
 import EditClinicForm from './EditClinicForm.vue'
 
 defineProps(['newClinic'])
-const emit = defineEmits(['add', 'clear'])
+const emit = defineEmits(['add', 'clear', 'reset-errors'])
 
 const addClinic = (clinic) => {
   emit('add', clinic)
@@ -37,5 +37,6 @@ const addClinic = (clinic) => {
 
 const clearNewClinic = (clinic) => {
   emit('clear', clinic)
+  emit('reset-errors')
 }
 </script>

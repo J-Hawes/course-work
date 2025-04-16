@@ -137,7 +137,15 @@
             <button class="btn btn-success btn-sm me-2" @click="$emit('saveEdit', clinic)">
               Save
             </button>
-            <button class="btn btn-secondary btn-sm" @click="$emit('cancelEdit', clinic)">
+            <button
+              class="btn btn-secondary btn-sm"
+              @click="
+                () => {
+                  resetErrors()
+                  $emit('cancelEdit', clinic)
+                }
+              "
+            >
               Cancel
             </button>
           </div>
@@ -152,7 +160,7 @@ import { ref } from 'vue'
 import { validateName, validatePostcode, validatePhone } from '@/helpers/validation.js'
 
 defineProps(['clinics', 'editingRowId'])
-defineEmits(['edit', 'delete', 'saveEdit', 'cancelEdit'])
+defineEmits(['edit', 'delete', 'saveEdit', 'cancelEdit', 'reset-errors'])
 
 const errors = ref({
   name: null,
@@ -164,6 +172,19 @@ const errors = ref({
   phone: null,
   hours: null,
 })
+
+const resetErrors = () => {
+  errors.value = {
+    name: null,
+    streetNumber: null,
+    streetName: null,
+    suburb: null,
+    state: null,
+    postcode: null,
+    phone: null,
+    hours: null,
+  }
+}
 
 // Function to validate some of the fields
 // Without integrated maps api to validate a correct address

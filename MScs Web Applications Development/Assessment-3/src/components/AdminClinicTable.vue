@@ -69,6 +69,8 @@ import {
   limit,
 } from 'firebase/firestore'
 
+const emit = defineEmits(['reset-errors'])
+
 // Destructure the props passed to the component
 const { collectionName, title } = defineProps({
   collectionName: String,
@@ -231,6 +233,8 @@ const cancelEdit = () => {
   editingclinic.value = null
   // Clear the editing row ID
   editingRowId.value = null
+  // Emit an event to reset errors in the editClinicForm component
+  emit('reset-errors')
 }
 
 // Clear the new clinic data by resetting all fields to empty strings
