@@ -9,7 +9,7 @@
             style="height: 30px; font-size: 14px"
             type="text"
             class="form-control"
-            placeholder="Search clinics..."
+            placeholder="Search clinics by name, suburb, state, or postcode..."
             v-model="searchQuery"
           />
           <span class="input-group-text" style="height: 30px">
@@ -220,6 +220,12 @@ const saveEdit = async (clinic) => {
 
 // Cancel the editing state
 const cancelEdit = () => {
+  clinics.value = clinics.value.map((clinic) => {
+    if (clinic.id === editingRowId.value) {
+      return { ...editingclinic.value }
+    }
+    return clinic
+  })
   // Clear the editing clinic
   editingclinic.value = null
   // Clear the editing row ID

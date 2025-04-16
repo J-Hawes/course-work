@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-md-12">
-      <h1 class="text-center mt-4">{{ title }}</h1>
+      <h1 class="text-center mt-4">Contact form {{ title }}</h1>
       <table class="table table-striped d-md-table">
         <thead>
           <tr>

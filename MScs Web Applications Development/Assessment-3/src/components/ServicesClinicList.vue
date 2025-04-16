@@ -5,7 +5,7 @@
       <input
         type="text"
         class="form-control"
-        placeholder="Search clinics..."
+        placeholder="Search clinics by name, suburb, state, or postcode..."
         v-model="searchQuery"
       />
       <span class="input-group-text">

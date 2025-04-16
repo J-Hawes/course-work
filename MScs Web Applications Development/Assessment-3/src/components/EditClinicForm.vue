@@ -5,10 +5,16 @@
         :type="key === 'phone' ? 'tel' : 'text'"
         :id="key"
         class="form-control mb-2"
+        :class="{ 'is-invalid': errors[key] }"
         v-model="localClinic[key]"
         placeholder=" "
+        @blur="() => validateField(key, localClinic[key], errors, true)"
+        @input="() => validateField(key, localClinic[key], errors, false)"
       />
       <label :for="key">{{ key.charAt(0).toUpperCase() + key.slice(1) }}</label>
+      <small v-if="errors[key]" class="text-danger">
+        {{ errors[key] }}
+      </small>
     </div>
     <div class="d-flex justify-content-end">
       <button
@@ -24,11 +30,49 @@
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { ref, reactive } from 'vue'
+import { validateName, validatePostcode, validatePhone } from '@/helpers/validation.js'
 
 const props = defineProps(['clinic'])
 defineEmits(['save', 'clear'])
 const localClinic = reactive({ ...props.clinic })
+
+const errors = ref({
+  name: null,
+  streetNumber: null,
+  streetName: null,
+  suburb: null,
+  state: null,
+  postcode: null,
+  phone: null,
+  hours: null,
+})
+
+// Function to validate some of the fields
+// Without integrated maps api to validate a correct address
+// Only the name, postcode and phone are validated for values and correct patterns
+const validateField = (field, value, error, blur) => {
+  if (!value || value.toString().trim() === '') {
+    errors.value[field] = `${field} is required.`
+  } else if (blur) {
+    switch (field) {
+      case 'name':
+        validateName(value, field, error, blur)
+        break
+      case 'postcode':
+        validatePostcode(value, error, blur)
+        break
+      case 'phone':
+        validatePhone(value, error, blur)
+        break
+      default:
+        errors.value[field] = null
+        break
+    }
+  } else {
+    errors.value[field] = null
+  }
+}
 </script>
 
 <style scoped>

@@ -1,15 +1,16 @@
 <template>
   <div class="container">
-    <h1>Administration Dashboard</h1>
-    <p>Welcome to the admin dashboard!</p>
-
+    <div class="text-center">
+      <h1>Administration Dashboard</h1>
+      <p>Welcome to the admin dashboard!</p>
+    </div>
     <!-- Cards Section -->
     <div class="row mb-4">
       <!-- User Count Card -->
       <div class="col-md-3 col-6">
         <div class="card text-center">
           <div class="card-body">
-            <h5 class="card-title">Users</h5>
+            <h5 class="card-title">Registered Users</h5>
             <p class="card-text">{{ userCount }}</p>
             <button class="btn btn-primary me-2" @click="userAdmin">User Admin</button>
           </div>

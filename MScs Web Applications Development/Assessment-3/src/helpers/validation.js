@@ -83,6 +83,16 @@ export const validatePhone = (phone, errors, blur) => {
   }
 }
 
+// Postcode number validation
+export const validatePostcode = (postcode, errors, blur) => {
+  const postCodePattern = /^\d{4}$/
+  if (!postCodePattern.test(postcode)) {
+    if (blur) errors.postcode = 'Postcode must be 4 digits'
+  } else {
+    errors.postcode = null
+  }
+}
+
 // Subject of message validation
 export const validateSubject = (subject, errors, blur) => {
   if (blur) {

@@ -59,8 +59,14 @@
               type="text"
               id="name{{ clinic.id }}"
               class="form-control"
+              :class="{ 'is-invalid': errors.name }"
               v-model="clinic.name"
+              @blur="() => validateField('name', clinic.name, errors, true)"
+              @input="() => validateField('name', clinic.name, errors, false)"
             />
+            <small v-if="errors.name" class="text-danger">
+              {{ errors.name }}
+            </small>
           </td>
           <td>
             <div class="row">
@@ -103,8 +109,14 @@
               type="text"
               id="postcode{{ clinic.id }}"
               class="form-control"
+              :class="{ 'is-invalid': errors.postcode }"
               v-model.number="clinic.postcode"
+              @blur="() => validateField('postcode', clinic.postcode, errors, true)"
+              @input="() => validateField('postcode', clinic.postcode, errors, false)"
             />
+            <small v-if="errors.postcode" class="text-danger">
+              {{ errors.postcode }}
+            </small>
           </td>
           <td>
             <input
@@ -112,8 +124,14 @@
               pattern="[0-9]{10}"
               id="phone{{ clinic.id }}"
               class="form-control"
-              v-model.number="clinic.phone"
+              :class="{ 'is-invalid': errors.phone }"
+              v-model="clinic.phone"
+              @blur="() => validateField('phone', clinic.phone, errors, true)"
+              @input="() => validateField('phone', clinic.phone, errors, false)"
             />
+            <small v-if="errors.phone" class="text-danger">
+              {{ errors.phone }}
+            </small>
           </td>
           <td>
             <input
@@ -162,10 +180,48 @@
 
 <script setup>
 import { ref, computed } from 'vue'
+import { validateName, validatePostcode, validatePhone } from '@/helpers/validation.js'
 // Destructure props
 const { clinics, editingRowId } = defineProps(['clinics', 'editingRowId'])
 
 defineEmits(['edit', 'delete', 'saveEdit', 'cancelEdit'])
+
+const errors = ref({
+  name: null,
+  streetNumber: null,
+  streetName: null,
+  suburb: null,
+  state: null,
+  postcode: null,
+  phone: null,
+  hours: null,
+})
+
+// Function to validate some of the fields
+// Without integrated maps api to validate a correct address
+// Only the name, postcode and phone are validated for values and correct patterns
+const validateField = (field, value, error, blur) => {
+  if (!value || value.toString().trim() === '') {
+    errors.value[field] = `${field} is required.`
+  } else if (blur) {
+    switch (field) {
+      case 'name':
+        validateName(value, field, error, blur)
+        break
+      case 'postcode':
+        validatePostcode(value, error, blur)
+        break
+      case 'phone':
+        validatePhone(value, error, blur)
+        break
+      default:
+        errors.value[field] = null
+        break
+    }
+  } else {
+    errors.value[field] = null
+  }
+}
 
 // State for sorting
 const sortKey = ref('name') // Default sort column

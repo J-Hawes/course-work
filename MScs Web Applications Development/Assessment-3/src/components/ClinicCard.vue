@@ -31,10 +31,16 @@
               type="text"
               id="name-mobile-{{ clinic.id }}"
               class="form-control mb-2"
+              :class="{ 'is-invalid': errors.name }"
               v-model="clinic.name"
               placeholder=" "
+              @blur="() => validateField('name', clinic.name, errors, true)"
+              @input="() => validateField('name', clinic.name, errors, false)"
             />
             <label for="name-mobile-{{ clinic.id }}">Clinic Name</label>
+            <small v-if="errors.name" class="text-danger">
+              {{ errors.name }}
+            </small>
           </div>
 
           <div class="floating-label">
@@ -86,10 +92,16 @@
               type="text"
               id="postcode-mobile-{{ clinic.id }}"
               class="form-control mb-2"
+              :class="{ 'is-invalid': errors.postcode }"
               v-model.number="clinic.postcode"
               placeholder=" "
+              @blur="() => validateField('postcode', clinic.postcode, errors, true)"
+              @input="() => validateField('postcode', clinic.postcode, errors, false)"
             />
             <label for="postcode-mobile-{{ clinic.id }}">Postcode</label>
+            <small v-if="errors.postcode" class="text-danger">
+              {{ errors.postcode }}
+            </small>
           </div>
 
           <div class="floating-label">
@@ -98,10 +110,16 @@
               pattern="[0-9]{10}"
               id="phone-mobile-{{ clinic.id }}"
               class="form-control mb-2"
+              :class="{ 'is-invalid': errors.phone }"
               v-model.number="clinic.phone"
               placeholder=" "
+              @blur="() => validateField('phone', clinic.phone, errors, true)"
+              @input="() => validateField('phone', clinic.phone, errors, false)"
             />
             <label for="phone-mobile-{{ clinic.id }}">Phone</label>
+            <small v-if="errors.phone" class="text-danger">
+              {{ errors.phone }}
+            </small>
           </div>
 
           <div class="floating-label">
@@ -130,8 +148,48 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
+import { validateName, validatePostcode, validatePhone } from '@/helpers/validation.js'
+
 defineProps(['clinics', 'editingRowId'])
 defineEmits(['edit', 'delete', 'saveEdit', 'cancelEdit'])
+
+const errors = ref({
+  name: null,
+  streetNumber: null,
+  streetName: null,
+  suburb: null,
+  state: null,
+  postcode: null,
+  phone: null,
+  hours: null,
+})
+
+// Function to validate some of the fields
+// Without integrated maps api to validate a correct address
+// Only the name, postcode and phone are validated for values and correct patterns
+const validateField = (field, value, error, blur) => {
+  if (!value || value.toString().trim() === '') {
+    errors.value[field] = `${field} is required.`
+  } else if (blur) {
+    switch (field) {
+      case 'name':
+        validateName(value, field, error, blur)
+        break
+      case 'postcode':
+        validatePostcode(value, error, blur)
+        break
+      case 'phone':
+        validatePhone(value, error, blur)
+        break
+      default:
+        errors.value[field] = null
+        break
+    }
+  } else {
+    errors.value[field] = null
+  }
+}
 </script>
 
 <style scoped>
