@@ -168,4 +168,46 @@ onMounted(() => {
   padding: 0.5rem;
   font-size: 0.9rem;
 }
+
+/* Shrink table for smaller screens */
+@media (max-width: 576px) {
+  .table {
+    font-size: 0.7rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.3rem;
+  }
+
+  .btn {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.4rem;
+  }
+}
+
+/* Shrink modal for smaller screens */
+@media (max-width: 576px) {
+  .modal-dialog {
+    max-width: 90%;
+    margin: 0.5rem auto;
+  }
+
+  .modal-content {
+    font-size: 0.8rem;
+  }
+
+  .modal-header h5 {
+    font-size: 1rem;
+  }
+
+  .modal-body p {
+    font-size: 0.8rem;
+  }
+
+  .modal-footer .btn {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.4rem;
+  }
+}
 </style>

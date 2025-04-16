@@ -62,7 +62,17 @@ const signin = async () => {
     // Redirect to the home page after successful sign-in
     router.push('/')
   } catch (error) {
-    console.log('Error signing in: ', error)
+    if (error.code === 'auth/user-not-found') {
+      alert('User not found. Please register.')
+    } else if (error.code === 'auth/wrong-password') {
+      alert('Incorrect password. Please try again.')
+    } else if (error.code === 'auth/invalid-email') {
+      alert('Invalid email address. Please enter a valid email.')
+    } else if (error.code === 'auth/invalid-credential') {
+      alert('Invalid credentials. Please check your email and password.')
+    } else {
+      alert('Error Logging in: ' + error)
+    }
   }
 }
 
