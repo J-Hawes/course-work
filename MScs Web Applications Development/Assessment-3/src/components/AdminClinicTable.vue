@@ -2,7 +2,7 @@
   <div class="row justify-content-center">
     <div class="col-md-12">
       <h1 class="text-center mt-4">{{ title }}</h1>
-      <div class="d-flex justify-content-end my-3">
+      <div class="d-flex justify-content-end my-1">
         <!-- Search Input -->
         <div class="input-group" style="height: 30px">
           <input
@@ -16,7 +16,8 @@
             <i class="bi bi-search"></i>
           </span>
         </div>
-
+      </div>
+      <div class="d-flex justify-content-end my-1">
         <button
           class="btn btn-primary"
           style="height: 30px; width: 10%; font-size: 14px"
@@ -239,3 +240,12 @@ const clearNewClinic = (clinic) => {
   })
 }
 </script>
+
+<style scoped>
+@media (max-width: 576px) {
+  .btn.btn-primary {
+    width: 40% !important;
+    font-size: 14px;
+  }
+}
+</style>

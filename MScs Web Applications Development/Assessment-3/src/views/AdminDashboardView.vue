@@ -41,7 +41,7 @@
             <h5 class="card-title">Mental Health Clinics</h5>
             <p class="card-text">{{ mentalHealthClinicCount }}</p>
             <button
-              class="btn btn-primary"
+              class="btn btn-primary me-2"
               :class="{ active: selectedCollection === 'mentalHealthClinics' }"
               @click="loadMentalHealthClinics"
             >
@@ -58,7 +58,7 @@
             <h5 class="card-title">New Messages</h5>
             <p class="card-text">{{ newMessagesCount }}</p>
             <button
-              class="btn btn-primary"
+              class="btn btn-primary me-2"
               :class="{ active: selectedCollection === 'messages' }"
               @click="loadMessages"
             >
@@ -155,12 +155,19 @@ onMounted(() => {
 /* Adjust card size and spacing for smaller screens */
 @media (max-width: 576px) {
   .card {
-    font-size: 0.9rem;
-    padding: 0.5rem;
+    height: 7rem;
+    font-size: 0.6rem;
+    overflow-y: auto;
+  }
+
+  .card .card-body {
+    padding: 0.1rem;
   }
 
   .card .card-title {
+    white-space: nowrap;
     font-size: 1rem;
+    overflow: hidden;
   }
 
   .card .card-text {
@@ -168,7 +175,7 @@ onMounted(() => {
   }
   .card .btn {
     font-size: 0.8rem;
-    padding: 0.3rem 0.5rem;
+    padding: 0.1rem 0.2rem;
   }
 }
 </style>
